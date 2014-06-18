@@ -1,0 +1,13 @@
+tile.materiaOre.name=Blue Materia Ore
+item.materiaIngot.name=Blue Materia Ingot
+itemGroup.tabMateria=Materia
+tile.materiaBlock.name=Materia Block
+item.materiaCrystal.name=Materia Crystal
+item.MateriaPickaxe.name=Materia Pickaxe
+item.MateriaSword.name=Materia Sword
+item.MateriaAxe.name=Materia Axe
+item.MateriaShovel.name=Materia Shovel
+item.MateriaHoe.name=Materia Hoe
+item.materiaDust.name=Materia Dust
+tile.blueMateriaBricks.name=Blue Materia Brick
+tile.redMateriaOre.name= Red Materia Ore
