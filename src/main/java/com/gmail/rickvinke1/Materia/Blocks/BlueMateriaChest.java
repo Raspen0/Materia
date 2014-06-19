@@ -230,7 +230,7 @@ public class BlueMateriaChest extends BlockChest{
 	  @SideOnly(Side.CLIENT)
 	    public void registerBlockIcons(IIconRegister p_149651_1_)
 	    {
-	        this.blockIcon = p_149651_1_.registerIcon(Strings.MODID + ":BlueMateriaChest");
+	        this.blockIcon = p_149651_1_.registerIcon(Strings.MODID + ":BlueMateriaBlock");
 	    }
 
 }
