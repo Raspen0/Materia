@@ -33,7 +33,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 public class mainRegistry
 {
 
-    @SidedProxy(clientSide="com.gmail.rickvinke1.Materia.client.ClientProxy", serverSide="com.gmail.rickvinke1.Materia.ServerProxy")
+    @SidedProxy(clientSide="com.gmail.rickvinke1.Materia.client.ClientProxy", serverSide="com.gmail.rickvinke1.Materia.server.ServerProxy")
     public static ServerProxy proxy;
 
     @Metadata
