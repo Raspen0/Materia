@@ -50,7 +50,7 @@ public class MateriaItems {
         MateriaSword = new CustomSword(BlueMateria).setUnlocalizedName("MateriaSword").setCreativeTab(com.gmail.rickvinke1.Materia.mainRegistry.tabMateria).setTextureName("Materia:blueMateriaSword");
         MateriaShovel = new CustomShovel(BlueMateria).setUnlocalizedName("MateriaShovel").setCreativeTab(com.gmail.rickvinke1.Materia.mainRegistry.tabMateria).setTextureName("Materia:blueMateriaShovel");
         MateriaHoe = new CustomHoe(BlueMateria).setUnlocalizedName("MateriaHoe").setCreativeTab(com.gmail.rickvinke1.Materia.mainRegistry.tabMateria).setTextureName("Materia:blueMateriaHoe");
-        MateriaAxe = new CustomSword(BlueMateria).setUnlocalizedName("MateriaAxe").setCreativeTab(com.gmail.rickvinke1.Materia.mainRegistry.tabMateria).setTextureName("Materia:blueMateriaAxe");   
+        MateriaAxe = new CustomAxe(BlueMateria).setUnlocalizedName("MateriaAxe").setCreativeTab(com.gmail.rickvinke1.Materia.mainRegistry.tabMateria).setTextureName("Materia:blueMateriaAxe");   
     }
     
     public static void registerBlocks(){

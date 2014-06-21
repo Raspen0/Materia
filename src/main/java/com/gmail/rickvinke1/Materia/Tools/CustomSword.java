@@ -6,30 +6,32 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
 import net.minecraft.item.ItemTool;
 
+import com.gmail.rickvinke1.Materia.Items.MateriaItems;
+
 public class CustomSword extends ItemSword
 {
 public CustomSword(ToolMaterial material)
 {
 super(material);
 }
-protected Item.ToolMaterial toolMaterial;
+protected Item.ToolMaterial BlueMateria;
 
 
 public Item.ToolMaterial func_150913_i()
 {
-    return this.toolMaterial;
+    return this.BlueMateria;
 }
 
-
+@Override
 public String getToolMaterialName()
 {
-    return this.toolMaterial.toString();
+    return this.BlueMateria.toString();
 }
 
-
+@Override
 public boolean getIsRepairable(ItemStack par1ItemStack, ItemStack par2ItemStack)
 {
-    return this.toolMaterial.func_150995_f() == par2ItemStack.getItem() ? true : super.getIsRepairable(par1ItemStack, par2ItemStack);
+    return MateriaItems.MateriaIngot  == par2ItemStack.getItem() ? true : super.getIsRepairable(par1ItemStack, par2ItemStack);
 }
 
 }

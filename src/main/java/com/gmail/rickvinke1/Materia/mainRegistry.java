@@ -26,6 +26,7 @@ import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import cpw.mods.fml.common.registry.GameRegistry;
 
 @Mod(modid=Strings.MODID, name=Strings.name, version=Strings.version)
 //@NetworkMod(clientSideRequired=true) // not used in 1.7
@@ -57,7 +58,6 @@ public class mainRegistry
     	MateriaWorld.mainRegistry();
     	TileEntityMateria.mainRegistry();
     	MateriaCrafting.MainClass();
-    	
     	proxy.registerRenderThings();
     	
     	
