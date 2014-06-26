@@ -38,7 +38,12 @@ public class MateriaWorldGenerator implements IWorldGenerator {
         int Xcoord = x + random.nextInt(16);
         int Ycoord = 10 + random.nextInt(30);
         int Zcoord = z + random.nextInt(16);
+        if (com.gmail.rickvinke1.Materia.Config.BlueMateriaOreGen){
         (new WorldGenMinable(MateriaBlocks.materiaOre, 1, 15, Blocks.stone)).generate(world, random, Xcoord, Ycoord, Zcoord);
+    	}
+        else
+        {
+        }
     }
  
     private void generateNether(World world, Random random, int x, int z)
@@ -46,7 +51,12 @@ public class MateriaWorldGenerator implements IWorldGenerator {
         int Xcoord = x + random.nextInt(16);
         int Ycoord = 10 + random.nextInt(180);
         int Zcoord = z + random.nextInt(16);
+        if (com.gmail.rickvinke1.Materia.Config.RedMateriaOreGen){
         (new WorldGenMinable(MateriaBlocks.materiaredOre, 1, 15, Blocks.netherrack)).generate(world, random, Xcoord, Ycoord, Zcoord);
+    	}
+        else
+        {
+        }
     }
  
     /**

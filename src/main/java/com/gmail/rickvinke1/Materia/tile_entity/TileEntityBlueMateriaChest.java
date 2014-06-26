@@ -8,33 +8,33 @@ import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntityChest;
 
 public class TileEntityBlueMateriaChest extends TileEntityChest{
-	
-	
-	
+
+
+
 	private String customName;
 	private ItemStack[] chestContents = new ItemStack[54];
 	private int cachedChestType;
-	
+
     @Override
 	public int getSizeInventory()
     {
         return 54;
     }
-	
-	
+
+
 	 public TileEntityBlueMateriaChest adjacentChestZNeg;
-	    
+
 	    public TileEntityBlueMateriaChest adjacentChestXPos;
-	   
+
 	    public TileEntityBlueMateriaChest adjacentChestXNeg;
-	 
+
 	    public TileEntityBlueMateriaChest adjacentChestZPos;
-	    
+
 	    public String getInventoryName()
 	    {
 	        return this.hasCustomInventoryName() ? this.customName : "Blue Materia Chest";
 	    }
-	    
+
 	    public boolean hasCustomInventoryName()
 	    {
 	        return this.customName != null && this.customName.length() > 0;
@@ -91,14 +91,14 @@ public class TileEntityBlueMateriaChest extends TileEntityChest{
 	            p_145841_1_.setString("Blue Materia Chest", this.customName);
 	        }
 	    }
-	    
 
 
-	    
+
+
 	    public ItemStack getStackInSlot(int par1){
 	    	return this.chestContents[par1];
 	    }
-	    
+
 	    public ItemStack decrStackSize(int par1, int par2)
 	    {
 	        if (this.chestContents[par1] != null)
@@ -130,7 +130,7 @@ public class TileEntityBlueMateriaChest extends TileEntityChest{
 	            return null;
 	        }
 	    }
-	    
+
 	    public ItemStack getStackInSlotOnClosing(int par1){
 	    	if(this.chestContents[par1] != null){
 	    		ItemStack itemstack = this.chestContents[par1];
@@ -141,7 +141,7 @@ public class TileEntityBlueMateriaChest extends TileEntityChest{
 	    		return null;
 	    	}
 	    }
-	    
+
 	    public void setInventorySlotContents(int par1, ItemStack itemstack){
 	    	this.chestContents[par1] = itemstack;
 	    	if(itemstack != null && itemstack.stackSize > this.getInventoryStackLimit()){

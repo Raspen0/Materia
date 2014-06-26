@@ -16,5 +16,4 @@ public class MateriaWorld {
 	public static void registerWorldGen(IWorldGenerator worldGenClass, int weightedProbabaility){
 		GameRegistry.registerWorldGenerator(worldGenClass, weightedProbabaility);
 	}
-
 }

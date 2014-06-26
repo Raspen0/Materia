@@ -30,13 +30,13 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 
 public class BlueMateriaChest extends BlockChest {
-	
+
 	private final Random field_149955_b = new Random();
-	
+
 	protected BlueMateriaChest(int chest){
 		super(chest);
 	}
-	
+
 	public void onBlockPlacedBy(World p_149689_1_, int p_149689_2_, int p_149689_3_, int p_149689_4_, EntityLivingBase p_149689_5_, ItemStack p_149689_6_)
     {
         Block block = p_149689_1_.getBlock(p_149689_2_, p_149689_3_, p_149689_4_ - 1);
@@ -106,7 +106,7 @@ public class BlueMateriaChest extends BlockChest {
             ((TileEntityBlueMateriaChest)p_149689_1_.getTileEntity(p_149689_2_, p_149689_3_, p_149689_4_)).func_145976_a(p_149689_6_.getDisplayName());
         }
     }
-	
+
 	 public void onNeighborBlockChange(World p_149695_1_, int p_149695_2_, int p_149695_3_, int p_149695_4_, Block p_149695_5_)
 	    {
 	        super.onNeighborBlockChange(p_149695_1_, p_149695_2_, p_149695_3_, p_149695_4_, p_149695_5_);
@@ -117,7 +117,7 @@ public class BlueMateriaChest extends BlockChest {
 	            tileentitychest.updateContainingBlockInfo();
 	        }
 	    }
-	 
+
 	 public void breakBlock(World p_149749_1_, int p_149749_2_, int p_149749_3_, int p_149749_4_, Block p_149749_5_, int p_149749_6_)
 	    {
 	        TileEntityBlueMateriaChest  tileentitychest = (TileEntityBlueMateriaChest )p_149749_1_.getTileEntity(p_149749_2_, p_149749_3_, p_149749_4_);
@@ -163,7 +163,7 @@ public class BlueMateriaChest extends BlockChest {
 
 	        super.breakBlock(p_149749_1_, p_149749_2_, p_149749_3_, p_149749_4_, p_149749_5_, p_149749_6_);
 	    }
-	 
+
 	 public IInventory func_149951_m(World p_149951_1_, int p_149951_2_, int p_149951_3_, int p_149951_4_)
 	    {
 	        Object object = (TileEntityBlueMateriaChest )p_149951_1_.getTileEntity(p_149951_2_, p_149951_3_, p_149951_4_);
@@ -202,7 +202,7 @@ public class BlueMateriaChest extends BlockChest {
 	            return (IInventory)object;
 	        }
 	    }
-	 
+
 	 private static boolean func_149953_o(World p_149953_0_, int p_149953_1_, int p_149953_2_, int p_149953_3_)
 	    {
 	        Iterator iterator = p_149953_0_.getEntitiesWithinAABB(EntityOcelot.class, AxisAlignedBB.getAABBPool().getAABB((double)p_149953_1_, (double)(p_149953_2_ + 1), (double)p_149953_3_, (double)(p_149953_1_ + 1), (double)(p_149953_2_ + 2), (double)(p_149953_3_ + 1))).iterator();
@@ -222,13 +222,13 @@ public class BlueMateriaChest extends BlockChest {
 
 	        return true;
 	    }
-	 
+
 	  public TileEntity createNewTileEntity(World p_149915_1_, int p_149915_2_)
 	    {
 	        TileEntityBlueMateriaChest  tileentitychest = new TileEntityBlueMateriaChest ();
 	        return tileentitychest;
 	    }
-	  
+
 	  @SideOnly(Side.CLIENT)
 	    public void registerBlockIcons(IIconRegister p_149651_1_)
 	    {
@@ -236,7 +236,7 @@ public class BlueMateriaChest extends BlockChest {
 	    }
 
 
-		
-	
+
+
 
 }

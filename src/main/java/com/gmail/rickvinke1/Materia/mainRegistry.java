@@ -6,6 +6,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.stats.Achievement;
 import net.minecraftforge.common.AchievementPage;
+import net.minecraftforge.common.config.Configuration;
 
 import com.gmail.rickvinke1.Materia.Blocks.MateriaBlocks;
 import com.gmail.rickvinke1.Materia.Items.MateriaItems;
@@ -26,6 +27,7 @@ import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import cpw.mods.fml.common.eventhandler.Event;
 import cpw.mods.fml.common.registry.GameRegistry;
 
 @Mod(modid=Strings.MODID, name=Strings.name, version=Strings.version)
@@ -52,14 +54,13 @@ public class mainRegistry
     @EventHandler
     public void PreLoad(FMLPreInitializationEvent PreEvent)
     {
-    	
+    	Config.init(PreEvent.getSuggestedConfigurationFile());
     	MateriaBlocks.mainRegistry();
     	MateriaItems.mainRegistry();
     	MateriaWorld.mainRegistry();
     	TileEntityMateria.mainRegistry();
     	MateriaCrafting.MainClass();
     	proxy.registerRenderThings();
-    	
     	
     }
     
