@@ -4,6 +4,6 @@ public class Strings {
 
 	public static final String MODID = "Materia";
 	public static final String name = "Materia";
-	public static final String version = "0.2.0";
+	public static final String version = "0.2.2";
 
 }
