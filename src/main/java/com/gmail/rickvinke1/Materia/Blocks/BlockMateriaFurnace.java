@@ -36,11 +36,11 @@ public class BlockMateriaFurnace extends BlockContainer {
 	public void registerBlockIcons(IIconRegister iconRegister){
 		this.blockIcon = iconRegister.registerIcon(Strings.MODID + ":" + "materia_furnace_side");
 		this.iconFront = iconRegister.registerIcon(Strings.MODID + ":" + (this.isActive ? "materia_furnace_front_on" : "materia_furnace_front_off"));
-		this.field_149935_N = iconRegister.registerIcon(Strings.MODID + ":" + "materia_furnace_side");
+        this.field_149935_N = iconRegister.registerIcon(Strings.MODID + ":" + "materia_furnace_top");
 	}
 	@SideOnly(Side.CLIENT)
 	public IIcon getIcon(int side, int metadata){
-		return  side == metadata ? this.iconFront : this.blockIcon;
+        return side == 1 ? this.field_149935_N : (side == 0 ? this.field_149935_N : (side != metadata ? this.blockIcon : this.iconFront));
 	}
 	
 	public Item GetItemDropped(int par1, Random random, int par3){
