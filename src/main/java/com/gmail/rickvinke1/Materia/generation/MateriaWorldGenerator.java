@@ -4,6 +4,8 @@ import java.util.Random;
 
 
 
+
+import com.gmail.rickvinke1.Materia.mainRegistry;
 import com.gmail.rickvinke1.Materia.Blocks.MateriaBlocks;
 
 import net.minecraft.block.Block;
@@ -38,7 +40,7 @@ public class MateriaWorldGenerator implements IWorldGenerator {
         int Xcoord = x + random.nextInt(16);
         int Ycoord = 10 + random.nextInt(30);
         int Zcoord = z + random.nextInt(16);
-        if (com.gmail.rickvinke1.Materia.Config.BlueMateriaOreGen){
+        if (mainRegistry.BlueMateriaOreGen){
         (new WorldGenMinable(MateriaBlocks.materiaOre, 1, 15, Blocks.stone)).generate(world, random, Xcoord, Ycoord, Zcoord);
     	}
         else
@@ -51,7 +53,7 @@ public class MateriaWorldGenerator implements IWorldGenerator {
         int Xcoord = x + random.nextInt(16);
         int Ycoord = 10 + random.nextInt(180);
         int Zcoord = z + random.nextInt(16);
-        if (com.gmail.rickvinke1.Materia.Config.RedMateriaOreGen){
+        if (mainRegistry.RedMateriaOreGen){
         (new WorldGenMinable(MateriaBlocks.materiaredOre, 1, 15, Blocks.netherrack)).generate(world, random, Xcoord, Ycoord, Zcoord);
     	}
         else

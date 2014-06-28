@@ -6,7 +6,9 @@ import cpw.mods.fml.client.registry.RenderingRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+
 import com.gmail.rickvinke1.Materia.*;
+
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemFood;
@@ -27,19 +29,24 @@ public class MateriaBlocks {
     public final static Block materiaredOre = new MateriaredOre(Material.rock);
     public final static Block materiaBlock = new MateriaBlock(Material.iron);
     public final static Block bluemateriaBrick = new blueMateriaBrick(Material.rock);
+    public static Block blockMateriaFurnaceIdle;
+    public static Block blockMateriaFurnaceActive;
     
     public static void initBlocks(){
-
+    	blockMateriaFurnaceIdle = new BlockMateriaFurnace(false).setBlockName("MateriaFurnaceIdle").setHardness(3.5F).setCreativeTab(com.gmail.rickvinke1.Materia.mainRegistry.tabMateria);
+    	blockMateriaFurnaceActive = new BlockMateriaFurnace(true).setBlockName("MateriaFurnaceActive").setHardness(3.5F).setLightLevel(0.9F);
     }
     
     public static void registerBlocks(){
-        if (com.gmail.rickvinke1.Materia.Config.BlockBlueMateriaChest){
+        if (mainRegistry.BlockBlueMateriaChest){
     	GameRegistry.registerBlock(BlueMateriaChest, "BlueMateriaChest");
         } else {}
         GameRegistry.registerBlock(materiaOre, "MateriaOre");
         GameRegistry.registerBlock(materiaBlock, "MateriaBlock");
         GameRegistry.registerBlock(bluemateriaBrick, "BlueMateriaBrick");
         GameRegistry.registerBlock(materiaredOre, "materiaredOre");
+        GameRegistry.registerBlock(blockMateriaFurnaceIdle, "Materia Furnace");
+        GameRegistry.registerBlock(blockMateriaFurnaceActive, "Materia Furnace Active");
     	
     }
 }
