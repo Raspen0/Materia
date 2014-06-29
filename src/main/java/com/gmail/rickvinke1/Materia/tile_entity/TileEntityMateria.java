@@ -11,7 +11,8 @@ public class TileEntityMateria {
 	}
 	
 	private static void registerTileEntities(){
-		GameRegistry.registerTileEntity(TileEntityBlueMateriaChest.class, Strings.MODID);
+		GameRegistry.registerTileEntity(TileEntityBlueMateriaChest.class, "BlueMateriaChest");
+		GameRegistry.registerTileEntity(TileEntityMateriaFurnace.class, "MateriaFurnace");
 	}
 
 }

@@ -13,6 +13,7 @@ import com.gmail.rickvinke1.Materia.Items.MateriaItems;
 import com.gmail.rickvinke1.Materia.generation.MateriaWorld;
 
 
+import com.gmail.rickvinke1.Materia.gui.GuiHandler;
 import com.gmail.rickvinke1.Materia.lib.Strings;
 import com.gmail.rickvinke1.Materia.server.ServerProxy;
 import com.gmail.rickvinke1.Materia.tile_entity.TileEntityMateria;
@@ -30,15 +31,19 @@ import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.eventhandler.Event;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
+import cpw.mods.fml.common.registry.LanguageRegistry;
 
 @Mod(modid=Strings.MODID, name=Strings.name, version=Strings.version, guiFactory = "com.gmail.rickvinke1.Materia.MateriaGuiFactory")
 //@NetworkMod(clientSideRequired=true) // not used in 1.7
 public class mainRegistry
 {
 
-	@Mod.Instance("Materia")
+	@Instance(Strings.MODID)
     public static mainRegistry instance;
+	
+	public static final int guiIdMateriaFurnace = 0; 
 	
     @SidedProxy(clientSide="com.gmail.rickvinke1.Materia.client.ClientProxy", serverSide="com.gmail.rickvinke1.Materia.server.ServerProxy")
     public static ServerProxy proxy;
@@ -48,8 +53,6 @@ public class mainRegistry
     @Metadata
     public static ModMetadata meta;
     
-    @Instance(Strings.MODID)
-    public static mainRegistry modInstance;
     
     public static CreativeTabs tabMateria = new CreativeTabs("Materia"){
     	public Item getTabIconItem(){
@@ -71,9 +74,13 @@ public class mainRegistry
     	configFile = new Configuration(Event.getSuggestedConfigurationFile());
     	MateriaBlocks.mainRegistry();
     	MateriaItems.mainRegistry();
+    	
+    	//LanguageRegistry.instance().addStringLocalization("container.materiaFurnace", "Materia Furnace");
+    	
     	MateriaWorld.mainRegistry();
     	TileEntityMateria.mainRegistry();
     	MateriaCrafting.MainClass();
+		NetworkRegistry.INSTANCE.registerGuiHandler(this, new GuiHandler());
     	proxy.registerRenderThings();
     	syncConfig();
     	
