@@ -14,6 +14,7 @@ import net.minecraft.item.ItemSword;
 import net.minecraft.item.ItemTool;
 import net.minecraft.tileentity.TileEntity;
 
+import com.gmail.rickvinke1.Materia.Blocks.BlockMateriaFurnace;
 import com.gmail.rickvinke1.Materia.Items.MateriaItems;
 
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -116,8 +117,15 @@ public class TileEntityMateriaFurnace extends TileEntity implements ISidedInvent
 		
 	}
 	
+	public boolean isBurning(){
+		return this.burnTime > 0;
+	}
+	
 	public void updateEntity(){
-		if(this.burnTime > 0){
+		boolean flag = this.burnTime > 0;
+		boolean flag1 = false;
+		
+		if(this.isBurning()){
 			this.burnTime--;
 		}
 		
@@ -125,7 +133,9 @@ public class TileEntityMateriaFurnace extends TileEntity implements ISidedInvent
 			if(this.burnTime == 0 && this.canSmelt()){
 				this.currentItemBurnTime = this.burnTime = getItemBurnTime(this.slots[1]);
 				
-				if(this.burnTime > 0){
+				if(this.isBurning()){
+					flag1 = true;
+					
 					if(this.slots[1] != null){
 						this.slots[1].stackSize--;
 						
@@ -135,7 +145,30 @@ public class TileEntityMateriaFurnace extends TileEntity implements ISidedInvent
 					}
 				}
 			}
+			
+			if(this.isBurning() && this.canSmelt()){
+				this.cooktime++;
+				
+				if(this.cooktime == this.furnaceSpeed){
+					this.cooktime = 0;
+					this.smeltItem();
+					flag1 = true;
+					
+				}
+			}else{
+				this.cooktime = 0;
+			}
+		
+			if(flag != this.burnTime > 0){
+				flag1 = true;
+				BlockMateriaFurnace.updateMateriaFurnaceBlockState(this.burnTime > 0, this.worldObj, this.xCoord, this.yCoord, this.zCoord);
+			}
+			
 		}
+		if(flag1){
+			this.markDirty();
+		}
+		
 	}
 	
 	public static int getItemBurnTime(ItemStack itemstack){
