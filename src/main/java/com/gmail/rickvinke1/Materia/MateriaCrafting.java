@@ -22,10 +22,13 @@ public class MateriaCrafting {
         
         //Recipes
         ItemStack materiaStack = new ItemStack(MateriaItems.MateriaIngot);
+        ItemStack RedmateriaStack = new ItemStack(MateriaItems.MateriaIngot);
+        RedmateriaStack.setItemDamage(1);
         ItemStack materiablockStack = new ItemStack(MateriaBlocks.materiaBlock);
         ItemStack diamondstack = new ItemStack(Items.diamond);
         ItemStack stickstack = new ItemStack(Items.stick);
         ItemStack brickstack = new ItemStack(Blocks.stonebrick);
+
 
         GameRegistry.addRecipe(new ItemStack(MateriaBlocks.materiaBlock), "xxx", "xxx", "xxx", 
                 'x', materiaStack);
@@ -48,7 +51,13 @@ public class MateriaCrafting {
         GameRegistry.addShapelessRecipe(new ItemStack(MateriaItems.MateriaIngot, 9), new ItemStack(MateriaBlocks.materiaBlock));
 		}
         public static void addSmeltingRecipes(){
-        GameRegistry.addSmelting(MateriaBlocks.materiaOre, new ItemStack(MateriaItems.MateriaIngot), 0.1f);
+            ItemStack BlueOrestack = new ItemStack(MateriaBlocks.materiaOre);
+            ItemStack RedOrestack = new ItemStack(MateriaBlocks.materiaredOre);
+            ItemStack RedmateriaStack = new ItemStack(MateriaItems.MateriaIngot);
+            ItemStack BluemateriaStack = new ItemStack(MateriaItems.MateriaIngot);
+            RedmateriaStack.setItemDamage(1);
+        GameRegistry.addSmelting(BlueOrestack, BluemateriaStack, 0.1f);
+        GameRegistry.addSmelting(RedOrestack, RedmateriaStack, 0.3f);
     }
 
 }

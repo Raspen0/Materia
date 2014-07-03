@@ -10,6 +10,7 @@ import com.gmail.rickvinke1.Materia.Tools.CustomSword;
 
 import cpw.mods.fml.client.registry.RenderingRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
+import cpw.mods.fml.common.registry.LanguageRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
@@ -17,6 +18,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemFood;
 import net.minecraft.item.Item.ToolMaterial;
 import net.minecraft.item.ItemArmor.ArmorMaterial;
+import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.util.EnumHelper;
 
 public class MateriaItems {
@@ -35,6 +37,7 @@ public class MateriaItems {
 	
    //tools
 	public static Item MateriaPickaxe;
+	public static Item ItemTutorial;
 	public static Item MateriaSword;
 	public static Item MateriaShovel;
 	public static Item MateriaHoe;
@@ -54,6 +57,8 @@ public class MateriaItems {
         MateriaHoe = new CustomHoe(BlueMateria).setUnlocalizedName("MateriaHoe").setCreativeTab(com.gmail.rickvinke1.Materia.mainRegistry.tabMateria).setTextureName("Materia:blueMateriaHoe");
         MateriaAxe = new CustomAxe(BlueMateria).setUnlocalizedName("MateriaAxe").setCreativeTab(com.gmail.rickvinke1.Materia.mainRegistry.tabMateria).setTextureName("Materia:blueMateriaAxe");
         MateriaCoal = new com.gmail.rickvinke1.Materia.Items.MateriaCoal();
+        LanguageRegistry.addName(new ItemStack(MateriaIngot, 1, 0), "Blue Materia Ingot");
+        LanguageRegistry.addName(new ItemStack(MateriaIngot, 1, 1), "Red Materia Ingot");
     }
     
     public static void registerBlocks(){
@@ -76,6 +81,7 @@ public class MateriaItems {
     	GameRegistry.registerItem(MateriaHoe, "MateriaHoe");
     	
     	GameRegistry.registerItem(MateriaCoal, "MateriaCoal");
+    	
     	
     }
 }

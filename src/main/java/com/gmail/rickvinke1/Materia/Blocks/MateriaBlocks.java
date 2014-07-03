@@ -33,8 +33,10 @@ public class MateriaBlocks {
     public static Block blockMateriaFurnaceActive;
     
     public static void initBlocks(){
+        if (mainRegistry.BlockMateriaFurnace){
     	blockMateriaFurnaceIdle = new BlockMateriaFurnace(false).setBlockName("MateriaFurnaceIdle").setHardness(3.5F).setCreativeTab(com.gmail.rickvinke1.Materia.mainRegistry.tabMateria);
     	blockMateriaFurnaceActive = new BlockMateriaFurnace(true).setBlockName("MateriaFurnaceActive").setHardness(3.5F).setLightLevel(0.9F);
+        } else {}
     }
     
     public static void registerBlocks(){
@@ -45,8 +47,10 @@ public class MateriaBlocks {
         GameRegistry.registerBlock(materiaBlock, "MateriaBlock");
         GameRegistry.registerBlock(bluemateriaBrick, "BlueMateriaBrick");
         GameRegistry.registerBlock(materiaredOre, "materiaredOre");
+
         GameRegistry.registerBlock(blockMateriaFurnaceIdle, "Materia Furnace");
         GameRegistry.registerBlock(blockMateriaFurnaceActive, "Materia Furnace Active");
+
     	
     }
 }

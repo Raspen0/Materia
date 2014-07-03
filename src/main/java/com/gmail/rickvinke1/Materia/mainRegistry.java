@@ -45,6 +45,8 @@ public class mainRegistry
 	
 	public static final int guiIdMateriaFurnace = 0; 
 	
+	
+	
     @SidedProxy(clientSide="com.gmail.rickvinke1.Materia.client.ClientProxy", serverSide="com.gmail.rickvinke1.Materia.server.ServerProxy")
     public static ServerProxy proxy;
     
@@ -65,6 +67,7 @@ public class mainRegistry
     public static final String CATEGORY_WORLDGEN = "worldgen";
     public static final String CATEGORY_DEV = "experimental";
 	public static boolean BlockBlueMateriaChest = true;
+	public static boolean BlockMateriaFurnace = true;
 	public static boolean BlueMateriaOreGen = true;
 	public static boolean RedMateriaOreGen = true;
 	
@@ -85,6 +88,7 @@ public class mainRegistry
     	syncConfig();
     	
     	
+    	
     }
     
     public static void syncConfig() {
@@ -92,6 +96,7 @@ public class mainRegistry
     	RedMateriaOreGen = configFile.get(CATEGORY_WORLDGEN, "Generate RedMateria Ore", true).getBoolean(true);
     	configFile.addCustomCategoryComment("experimental", "These settings are experimental, It is advised to backup your world before using!");
     	BlockBlueMateriaChest = configFile.get(CATEGORY_DEV, "BlueMateriaChest", true).getBoolean(true);
+    	BlockMateriaFurnace = configFile.get(CATEGORY_DEV, "Materia Furnace", true).getBoolean(true);
 
     	
     	
@@ -111,6 +116,7 @@ public class mainRegistry
     public void load(FMLInitializationEvent event)
     {
     	FMLCommonHandler.instance().bus().register(instance);
+    	
     	
     }
     
