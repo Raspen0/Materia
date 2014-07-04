@@ -25,7 +25,7 @@ public class GuiMateriaFurnace  extends GuiContainer{
 	}
 	
 	public void drawGuiContainerForegroundLayer(int par1, int par2) {
-		String name = this.materiaFurnace.isInvNameLocalized() ? this.materiaFurnace.getInvName() : I18n.format(this.materiaFurnace.getInvName(), new Object[0]);
+		String name = this.materiaFurnace.isInvNameLocalized() ? this.materiaFurnace.getInventoryName() : I18n.format(this.materiaFurnace.getInventoryName(), new Object[0]);
 		
 		this.fontRendererObj.drawString(name, this.xSize / 2 - this.fontRendererObj.getStringWidth(name) / 2, 6, 4210752);
 		this.fontRendererObj.drawString(I18n.format("container.inventory"), 8, this.ySize - 96 + 2, 4210752);

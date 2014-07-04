@@ -12,6 +12,7 @@ import net.minecraft.item.ItemHoe;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
 import net.minecraft.item.ItemTool;
+import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraft.tileentity.TileEntity;
 
 import com.gmail.rickvinke1.Materia.Blocks.BlockMateriaFurnace;
@@ -46,7 +47,7 @@ public class TileEntityMateriaFurnace extends TileEntity implements ISidedInvent
 		return this.slots.length;
 	}
 	
-	public String getInvName(){
+	public String getInventoryName(){
 		return this.isInvNameLocalized() ? this.localizedName : "container.materiaFurnace";
 	}
 	
@@ -59,34 +60,53 @@ public class TileEntityMateriaFurnace extends TileEntity implements ISidedInvent
 
 	}
 
-	public ItemStack getStackInSlot(int p_70301_1_) {
+	public ItemStack getStackInSlot(int i) {
+		return this.slots[i];
+	}
 
+
+	public ItemStack decrStackSize(int i, int j) {
+		if(this.slots[i] != null) {
+			ItemStack itemstack;
+			
+			if(this.slots[i].stackSize <= j){
+				itemstack = this.slots[i];
+				this.slots[i] = null;	
+				return itemstack;
+			}else{
+				itemstack = this.slots[i].splitStack(j);
+				
+				if(this.slots[i].stackSize == 0){
+					this.slots[i] = null;
+				}
+				
+				return itemstack;
+			}
+		}
+		
 		return null;
 	}
 
 
-	public ItemStack decrStackSize(int p_70298_1_, int p_70298_2_) {
-
-		return null;
-	}
-
-
-	public ItemStack getStackInSlotOnClosing(int p_70304_1_) {
-
+	public ItemStack getStackInSlotOnClosing(int i) {
+		if(this.slots[i] != null){
+			ItemStack itemstack = this.slots[i];
+			this.slots[i] = null;
+			return itemstack;
+		}
+		
+		
 		return null;
 	}
 
 	
-	public void setInventorySlotContents(int p_70299_1_, ItemStack p_70299_2_) {
-				
+	public void setInventorySlotContents(int i, ItemStack itemstack) {
+		this.slots[i] = itemstack;
+		
+		if(itemstack != null && itemstack.stackSize > this.getInventoryStackLimit()){
+			itemstack.stackSize = this.getInventoryStackLimit();
+		}
 	}
-
-
-	public String getInventoryName() {
-
-		return null;
-	}
-
 
 	public boolean hasCustomInventoryName() {
 
@@ -96,26 +116,17 @@ public class TileEntityMateriaFurnace extends TileEntity implements ISidedInvent
 
 	public int getInventoryStackLimit() {
 
-		return 0;
+		return 64;
 	}
 
 
-	public boolean isUseableByPlayer(EntityPlayer p_70300_1_) {
-
-		return false;
+	public boolean isUseableByPlayer(EntityPlayer entityplayer) {
+		return this.worldObj.getTileEntity(this.xCoord, this.yCoord, this.zCoord) != this ? false : entityplayer.getDistanceSq((double)this.xCoord + 0.5D, (double)this.yCoord + 0.5D, (double)this.zCoord + 0.5D) <= 64.0D;
 	}
 
 
-	public void openInventory() {
-
-		
-	}
-
-
-	public void closeInventory() {
-
-		
-	}
+	public void openInventory() {}
+	public void closeInventory() {}
 	
 	public boolean isBurning(){
 		return this.burnTime > 0;
@@ -169,6 +180,40 @@ public class TileEntityMateriaFurnace extends TileEntity implements ISidedInvent
 			this.markDirty();
 		}
 		
+	}
+	
+	private boolean canSmelt(){
+		if(this.slots[0] == null){
+			return false;
+		}else{
+			ItemStack itemstack = FurnaceRecipes.smelting().getSmeltingResult(this.slots[0]);
+			
+			if(itemstack == null) return false;
+			if(this.slots[2] == null) return true;
+			if(!this.slots[2].isItemEqual(itemstack)) return false;
+			
+			int result = this.slots[2].stackSize + itemstack.stackSize;
+			
+			return (result <= getInventoryStackLimit() && result <= itemstack.getMaxStackSize());
+		}
+	}
+	
+	public void smeltItem(){
+		if(this.canSmelt()){
+			ItemStack itemstack = FurnaceRecipes.smelting().getSmeltingResult(this.slots[0]);
+			
+			if(this.slots[2] == null){
+				this.slots[2] = itemstack.copy();
+			}else if(this.slots[2].isItemEqual(itemstack)){
+				this.slots[2].stackSize += itemstack.stackSize;
+			}
+			
+			this.slots[0].stackSize--;
+			
+			if(this.slots[0].stackSize <= 0){
+				this.slots[0] = null;
+			}
+		}
 	}
 	
 	public static int getItemBurnTime(ItemStack itemstack){

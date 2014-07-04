@@ -8,10 +8,11 @@ import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.inventory.Container;
+import net.minecraft.inventory.IInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.tileentity.TileEntityFurnace;
 import net.minecraft.util.IIcon;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
@@ -29,6 +30,8 @@ public class BlockMateriaFurnace extends BlockContainer {
 	private final boolean isActive;
 	@SideOnly(Side.CLIENT)
 	private IIcon iconFront;
+	
+	private static boolean keepInventory;
 	
 	public BlockMateriaFurnace(boolean isActive) {
 		super(Material.iron);
@@ -113,6 +116,38 @@ public class BlockMateriaFurnace extends BlockContainer {
 		if(p_149689_6_.hasDisplayName()){
 			 ((TileEntityMateriaFurnace)p_149689_1_.getTileEntity(p_149689_2_, p_149689_3_, p_149689_4_)).setGuiDisplayName(p_149689_6_.getDisplayName());
 		}
+	}
+	public static void updateMateriaFurnaceBlockState(boolean active, World worldObj, int xCoord, int yCoord, int zCoord) {
+		int i = worldObj.getBlockMetadata(xCoord, yCoord, zCoord);
+		TileEntity tileentity = worldObj.getTileEntity(xCoord, yCoord, zCoord);
+		keepInventory = true;
+		
+		if(active){
+			worldObj.setBlock(xCoord, yCoord, zCoord, MateriaBlocks.blockMateriaFurnaceActive);
+		}else{
+			worldObj.setBlock(xCoord, yCoord, zCoord, MateriaBlocks.blockMateriaFurnaceIdle);
+		}
+		
+		keepInventory= false;
+		
+		worldObj.setBlockMetadataWithNotify(xCoord, yCoord, zCoord, i, 2);
+		
+		if(tileentity != null){
+			tileentity.validate();
+			worldObj.setTileEntity(xCoord, yCoord, zCoord, tileentity);
+		}
+	}
+	
+	public boolean hasComparatorInputOverride(){
+		return true;
+	}
+	
+	public int getComparatorInputOverride(World world, int x, int y, int z, int i){
+		return Container.calcRedstoneFromInventory((IInventory)world.getTileEntity(x, y, z));
+	}
+	
+	public Item getItem(World world, int x, int y, int z){
+		return Item.getItemFromBlock(MateriaBlocks.blockMateriaFurnaceIdle);
 	}
 }
 
