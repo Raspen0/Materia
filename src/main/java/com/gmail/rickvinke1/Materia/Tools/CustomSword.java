@@ -31,7 +31,7 @@ public String getToolMaterialName()
 @Override
 public boolean getIsRepairable(ItemStack par1ItemStack, ItemStack par2ItemStack)
 {
-    return MateriaItems.MateriaIngot  == par2ItemStack.getItem() ? true : super.getIsRepairable(par1ItemStack, par2ItemStack);
+	return par2ItemStack.isItemEqual(new ItemStack(MateriaItems.MateriaIngot, 1, 0)) || super.getIsRepairable(par1ItemStack, par2ItemStack);
 }
 
 }
