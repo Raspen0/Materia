@@ -22,7 +22,7 @@ public class MateriaIngot extends Item {
         setCreativeTab(com.gmail.rickvinke1.Materia.mainRegistry.tabMateria);
         setUnlocalizedName("materiaIngot");
 }
-	public static final String[] names = new String[] { "first", "second" };
+	public static final String[] names = new String[] { "Blue", "Red" };
 	 
     @Override
     public String getUnlocalizedName(ItemStack par1ItemStack)

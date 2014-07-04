@@ -57,8 +57,6 @@ public class MateriaItems {
         MateriaHoe = new CustomHoe(BlueMateria).setUnlocalizedName("MateriaHoe").setCreativeTab(com.gmail.rickvinke1.Materia.mainRegistry.tabMateria).setTextureName("Materia:blueMateriaHoe");
         MateriaAxe = new CustomAxe(BlueMateria).setUnlocalizedName("MateriaAxe").setCreativeTab(com.gmail.rickvinke1.Materia.mainRegistry.tabMateria).setTextureName("Materia:blueMateriaAxe");
         MateriaCoal = new com.gmail.rickvinke1.Materia.Items.MateriaCoal();
-        LanguageRegistry.addName(new ItemStack(MateriaIngot, 1, 0), "Blue Materia Ingot");
-        LanguageRegistry.addName(new ItemStack(MateriaIngot, 1, 1), "Red Materia Ingot");
     }
     
     public static void registerBlocks(){

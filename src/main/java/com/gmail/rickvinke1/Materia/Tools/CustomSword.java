@@ -10,9 +10,10 @@ import com.gmail.rickvinke1.Materia.Items.MateriaItems;
 
 public class CustomSword extends ItemSword
 {
-public CustomSword(ToolMaterial material)
-{
+    private final Item.ToolMaterial field_150933_b;
+public CustomSword(ToolMaterial material){
 super(material);
+this.field_150933_b = material;
 }
 protected Item.ToolMaterial BlueMateria;
 
@@ -25,7 +26,7 @@ public Item.ToolMaterial func_150913_i()
 @Override
 public String getToolMaterialName()
 {
-    return this.BlueMateria.toString();
+    return this.field_150933_b.toString();
 }
 
 @Override

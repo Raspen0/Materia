@@ -15,7 +15,7 @@ super(material);
 }
 protected Item.ToolMaterial BlueMateria;
 
-
+@Override
 public Item.ToolMaterial func_150913_i()
 {
     return this.BlueMateria;
@@ -24,7 +24,7 @@ public Item.ToolMaterial func_150913_i()
 @Override
 public String getToolMaterialName()
 {
-    return this.BlueMateria.toString();
+    return this.toolMaterial.toString();
 }
 
 @Override

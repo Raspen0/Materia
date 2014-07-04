@@ -8,6 +8,6 @@ public class MateriaCoal extends Item {
 	public MateriaCoal() {
         setCreativeTab(com.gmail.rickvinke1.Materia.mainRegistry.tabMateria);
         setUnlocalizedName("materiaCoal");
-        setTextureName("Minecraft:Coal");
+        setTextureName("coal");
 }
 }
