@@ -5,6 +5,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 
 import com.gmail.rickvinke1.Materia.mainRegistry;
+import com.gmail.rickvinke1.Materia.Container.ContainerMateriaFurnace;
 import com.gmail.rickvinke1.Materia.tile_entity.TileEntityMateriaFurnace;
 
 import cpw.mods.fml.common.network.IGuiHandler;

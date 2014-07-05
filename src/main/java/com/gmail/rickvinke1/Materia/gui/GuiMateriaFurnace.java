@@ -1,5 +1,8 @@
 package com.gmail.rickvinke1.Materia.gui;
 
+import org.lwjgl.opengl.GL11;
+
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.InventoryPlayer;
@@ -11,7 +14,7 @@ import com.gmail.rickvinke1.Materia.tile_entity.TileEntityMateriaFurnace;
 
 public class GuiMateriaFurnace  extends GuiContainer{
 	
-	public static final ResourceLocation FurnaceGui = new ResourceLocation(Strings.MODID, "textures/gui/Materia_Furnace.png");
+	public static final ResourceLocation FurnaceGui = new ResourceLocation(Strings.MODID + ":textures/gui/Materia_Furnace.png");
 
 	public TileEntityMateriaFurnace materiaFurnace;
 	
@@ -32,7 +35,18 @@ public class GuiMateriaFurnace  extends GuiContainer{
 	}
 	
 	public void drawGuiContainerBackgroundLayer(float f, int i, int j) {
+		GL11.glColor4f(1F, 1F, 1F, 1F);
 		
+		Minecraft.getMinecraft().getTextureManager().bindTexture(FurnaceGui);
+		drawTexturedModalRect(guiLeft, guiTop, 0, 0, xSize, ySize);
+		
+		if(this.materiaFurnace.isBurning()){
+			int k = this.materiaFurnace.getBurnTimeRemainingScaled(12);
+			drawTexturedModalRect(guiLeft + 56, guiTop + 36 + 12 - k, 176, 12-k, 14, k + 2);
+		}
+		
+		int k = this.materiaFurnace.getCookProgessScaled(24);
+		drawTexturedModalRect(guiLeft + 79, guiTop + 34, 176, 14, k + 1, 16);
 	}
 
 }

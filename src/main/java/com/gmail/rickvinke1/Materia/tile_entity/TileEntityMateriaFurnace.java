@@ -13,6 +13,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
 import net.minecraft.item.ItemTool;
 import net.minecraft.item.crafting.FurnaceRecipes;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntity;
 
 import com.gmail.rickvinke1.Materia.Blocks.BlockMateriaFurnace;
@@ -117,6 +119,55 @@ public class TileEntityMateriaFurnace extends TileEntity implements ISidedInvent
 	public int getInventoryStackLimit() {
 
 		return 64;
+	}
+	
+	public void readFromNBT(NBTTagCompound nbt){
+		super.readFromNBT(nbt);
+		
+		NBTTagList list = nbt.getTagList("Items", 10);
+		this.slots = new ItemStack[this.getSizeInventory()];
+		
+		for(int i = 0; i < list.tagCount(); i++){
+			NBTTagCompound compound = (NBTTagCompound) list.getCompoundTagAt(i);
+			byte b = compound.getByte("Slot");
+			
+			if(b >= 0 && b < this.slots.length){
+				this.slots[b] = ItemStack.loadItemStackFromNBT(compound);
+			}
+		}
+		
+		this.burnTime = nbt.getShort("BurnTime");
+		this.cooktime = nbt.getShort("CookTime");
+		this.currentItemBurnTime = getItemBurnTime(this.slots[1]);
+		
+		if(nbt.hasKey("CustomName")){
+			this.localizedName = nbt.getString("CustomName");
+		}
+	}
+	
+	public void writeToNBT(NBTTagCompound nbt){
+		super.writeToNBT(nbt);
+		
+		nbt.setShort("BurnTime", (short)this.burnTime);
+		nbt.setShort("CookTime", (short)this.cooktime);
+		
+		NBTTagList list = new NBTTagList();
+		
+		for(int i = 0; i < this.slots.length; i++){
+			if(this.slots[i] != null){
+				NBTTagCompound compound = new NBTTagCompound();
+				compound.setByte("Slot", (byte)i);
+				this.slots[i].writeToNBT(compound);
+				list.appendTag(compound);
+			}
+			
+		}
+		
+		nbt.setTag("Items", list);
+		
+		if(this.isInvNameLocalized()){
+			nbt.setString("CustomName", this.localizedName);
+		}
 	}
 
 
@@ -276,6 +327,17 @@ public class TileEntityMateriaFurnace extends TileEntity implements ISidedInvent
 	
 	public boolean canExtractItem(int i, ItemStack itemstack, int j) {
 		return j != 0 || i != 1 || itemstack.getItem() == Items.bucket;
+	}
+
+	public int getBurnTimeRemainingScaled(int i) {
+		if(this.currentItemBurnTime == 0){
+			this.currentItemBurnTime = this.furnaceSpeed;
+		}
+		return this.burnTime * i / this.currentItemBurnTime;
+	}
+	
+	public int getCookProgessScaled(int i){
+		return this.cooktime * i / this.furnaceSpeed;
 	}
 
 }
