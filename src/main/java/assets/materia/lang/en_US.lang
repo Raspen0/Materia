@@ -12,3 +12,5 @@ item.MateriaHoe.name=Blue Materia Hoe
 item.materiaDust.name=Blue Materia Dust
 tile.blueMateriaBricks.name=Blue Materia Brick
 tile.redMateriaOre.name= Red Materia Ore
+tile.MateriaFurnaceIdle.name=Materia Furnace
+container.materiaFurnace=Materia Furnace

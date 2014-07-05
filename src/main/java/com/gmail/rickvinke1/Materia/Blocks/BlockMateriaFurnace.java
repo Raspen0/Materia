@@ -46,7 +46,7 @@ public class BlockMateriaFurnace extends BlockContainer {
 	}
 	@SideOnly(Side.CLIENT)
 	public IIcon getIcon(int side, int metadata){
-        return side == 1 ? this.field_149935_N : (side == 0 ? this.field_149935_N : (side != metadata ? this.blockIcon : this.iconFront));
+        return metadata == 0 && side == 3 ? this.iconFront : (side == 1 ? this.field_149935_N : (side == 0 ? this.field_149935_N : (side != metadata ? this.blockIcon : this.iconFront)));
 	}
 	
 	public Item GetItemDropped(int par1, Random random, int par3){
@@ -79,7 +79,7 @@ public class BlockMateriaFurnace extends BlockContainer {
 				}
 			
 			if(block4.func_149730_j() && !block3.func_149730_j()){	
-				b0 = 5;
+				b0 = 4;
 				}
 			world.setBlockMetadataWithNotify(x, y, z, b0, 2);
 		}
