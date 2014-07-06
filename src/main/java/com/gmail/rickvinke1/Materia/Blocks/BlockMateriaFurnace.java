@@ -99,6 +99,36 @@ public class BlockMateriaFurnace extends BlockContainer {
 	public TileEntity createNewTileEntity(World world, int tileentity) {
 		return new TileEntityMateriaFurnace();
 	}
+
+	@SideOnly(Side.CLIENT)
+	 public void randomDisplayTick(World world, int x, int y, int z, Random random){
+		if(this.isActive){
+			int direction = world.getBlockMetadata(x, y, z);
+			
+			float x1 = (float)x + 0.5F;
+			float y1 = (float)y + random.nextFloat();
+			float z1 = (float)z + 0.5F;
+			
+			float f = 0.52F;
+			float f1 = random.nextFloat() * 0.6F - 0.3F;
+			
+			if(direction == 4){
+				world.spawnParticle("smoke", (double)(x1 - f), (double)(y1), (double)(z1 + f1), 0.0D, 0.0D, 0.0D);
+				world.spawnParticle("flame", (double)(x1 - f), (double)(y1), (double)(z1 + f1), 0.0D, 0.0D, 0.0D);
+			}else if(direction == 5){
+				world.spawnParticle("smoke", (double)(x1 + f), (double)(y1), (double)(z1 + f1), 0.0D, 0.0D, 0.0D);
+				world.spawnParticle("flame", (double)(x1 + f), (double)(y1), (double)(z1 + f1), 0.0D, 0.0D, 0.0D);
+			}else if(direction == 2){
+				world.spawnParticle("smoke", (double)(x1 + f1), (double)(y1), (double)(z1 - f), 0.0D, 0.0D, 0.0D);
+				world.spawnParticle("flame", (double)(x1 + f1), (double)(y1), (double)(z1 - f), 0.0D, 0.0D, 0.0D);
+			}else if(direction == 3){
+				world.spawnParticle("smoke", (double)(x1 + f1), (double)(y1), (double)(z1 + f), 0.0D, 0.0D, 0.0D);
+				world.spawnParticle("flame", (double)(x1 + f1), (double)(y1), (double)(z1 + f), 0.0D, 0.0D, 0.0D);
+			
+			}
+		}
+		
+	}
 	
 	 public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase livingbase, ItemStack itemstack){
 		int l = MathHelper.floor_double((double)(livingbase.rotationYaw * 4.0F / 360.0F) + 0.5D) & 3;
