@@ -7,11 +7,13 @@ import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IIcon;
 import net.minecraft.util.MathHelper;
@@ -26,6 +28,7 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockMateriaFurnace extends BlockContainer {
+	private Random random = new Random();
     private IIcon field_149935_N;
 	private final boolean isActive;
 	@SideOnly(Side.CLIENT)
@@ -93,28 +96,28 @@ public class BlockMateriaFurnace extends BlockContainer {
 		return true;
 	}
 	
-	public TileEntity createNewTileEntity(World p_149915_1_, int p_149915_2_) {
+	public TileEntity createNewTileEntity(World world, int tileentity) {
 		return new TileEntityMateriaFurnace();
 	}
 	
-	 public void onBlockPlacedBy(World p_149689_1_, int p_149689_2_, int p_149689_3_, int p_149689_4_, EntityLivingBase p_149689_5_, ItemStack p_149689_6_){
-		int l = MathHelper.floor_double((double)(p_149689_5_.rotationYaw * 4.0F / 360.0F) + 0.5D) & 3;
+	 public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase livingbase, ItemStack itemstack){
+		int l = MathHelper.floor_double((double)(livingbase.rotationYaw * 4.0F / 360.0F) + 0.5D) & 3;
 		
 		if(l == 0){
-			p_149689_1_.setBlockMetadataWithNotify(p_149689_2_, p_149689_3_, p_149689_4_, 2, 2);
+			world.setBlockMetadataWithNotify(x, y, z, 2, 2);
 		}
 		if(l == 1){
-			p_149689_1_.setBlockMetadataWithNotify(p_149689_2_, p_149689_3_, p_149689_4_, 5, 2);
+			world.setBlockMetadataWithNotify(x, y, z, 5, 2);
 		}
 		if(l == 2){
-			p_149689_1_.setBlockMetadataWithNotify(p_149689_2_, p_149689_3_, p_149689_4_, 3, 2);
+			world.setBlockMetadataWithNotify(x, y, z, 3, 2);
 		}
 		if(l == 3){
-			p_149689_1_.setBlockMetadataWithNotify(p_149689_2_, p_149689_3_, p_149689_4_, 4, 2);
+			world.setBlockMetadataWithNotify(x, y, z, 4, 2);
 		}
 		
-		if(p_149689_6_.hasDisplayName()){
-			 ((TileEntityMateriaFurnace)p_149689_1_.getTileEntity(p_149689_2_, p_149689_3_, p_149689_4_)).setGuiDisplayName(p_149689_6_.getDisplayName());
+		if(itemstack.hasDisplayName()){
+			 ((TileEntityMateriaFurnace)world.getTileEntity(x, y, z)).setGuiDisplayName(itemstack.getDisplayName());
 		}
 	}
 	public static void updateMateriaFurnaceBlockState(boolean active, World worldObj, int xCoord, int yCoord, int zCoord) {
@@ -136,6 +139,50 @@ public class BlockMateriaFurnace extends BlockContainer {
 			tileentity.validate();
 			worldObj.setTileEntity(xCoord, yCoord, zCoord, tileentity);
 		}
+	}
+    public void breakBlock(World world, int x, int y, int z, Block oldBlock, int oldMetadata){
+		if(!keepInventory){
+			TileEntityMateriaFurnace tileentity = (TileEntityMateriaFurnace) world.getTileEntity(x, y, z);
+			
+			if(tileentity != null){
+				for(int i = 0; i < tileentity.getSizeInventory(); i++){
+					ItemStack itemstack = tileentity.getStackInSlot(i);
+					
+					if(itemstack != null){
+						float f = this.random.nextFloat() * 0.8F + 0.1F;
+						float f1 = this.random.nextFloat() * 0.8F + 0.1F;
+						float f2 = this.random.nextFloat() * 0.8F + 0.1F;
+						
+						while(itemstack.stackSize > 0){
+							int j = this.random.nextInt(21) + 10;
+							
+							if(j > itemstack.stackSize){
+								j = itemstack.stackSize;
+							}
+							
+							itemstack.stackSize -= j;
+							
+							EntityItem item = new EntityItem(world, (double)((float)x + f), (double)((float)y + f1), (double)((float)z + f2), new ItemStack(itemstack.getItem(), j, itemstack.getItemDamage()));
+							
+							if(itemstack.hasTagCompound()){
+								item.getEntityItem().setTagCompound((NBTTagCompound)itemstack.getTagCompound().copy());
+							}
+							
+							float f3 = 0.05F;
+							item.motionX = (double)((float)this.random.nextGaussian() * f3);
+							item.motionY = (double)((float)this.random.nextGaussian() * f3 + 0.2F);
+							item.motionZ = (double)((float)this.random.nextGaussian() * f3);
+							
+							world.spawnEntityInWorld(item);
+						}
+					}
+				}
+				
+				world.func_147453_f(x, y, z, oldBlock);
+			}
+		}
+		
+		super.breakBlock(world, x, y, z, oldBlock, oldMetadata);
 	}
 	
 	public boolean hasComparatorInputOverride(){
