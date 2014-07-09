@@ -31,6 +31,8 @@ public class BlockMateriaFurnace extends BlockContainer {
 	private Random random = new Random();
     private IIcon field_149935_N;
 	private final boolean isActive;
+	
+	
 	@SideOnly(Side.CLIENT)
 	private IIcon iconFront;
 	
@@ -52,7 +54,7 @@ public class BlockMateriaFurnace extends BlockContainer {
         return metadata == 0 && side == 3 ? this.iconFront : (side == 1 ? this.field_149935_N : (side == 0 ? this.field_149935_N : (side != metadata ? this.blockIcon : this.iconFront)));
 	}
 	
-	public Item GetItemDropped(int par1, Random random, int par3){
+    public Item getItemDropped(int par1, Random random, int par3){
 		return Item.getItemFromBlock(MateriaBlocks.blockMateriaFurnaceIdle);
 	}
 	
@@ -89,8 +91,9 @@ public class BlockMateriaFurnace extends BlockContainer {
 	}
 	
 	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int side, float hitX, float hitY, float hitZ){
-		if(world.isRemote){
 			FMLNetworkHandler.openGui(player, mainRegistry.instance, mainRegistry.guiIdMateriaFurnace, world, x, y, z);
+			if(world.isRemote){
+				return true;
 		}
 		
 		return true;

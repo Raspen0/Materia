@@ -28,6 +28,7 @@ public class MateriaCrafting {
         ItemStack diamondstack = new ItemStack(Items.diamond);
         ItemStack stickstack = new ItemStack(Items.stick);
         ItemStack brickstack = new ItemStack(Blocks.stonebrick);
+        ItemStack furnace = new ItemStack(Blocks.furnace);
 
 
         GameRegistry.addRecipe(new ItemStack(MateriaBlocks.materiaBlock), "xxx", "xxx", "xxx", 
@@ -36,6 +37,8 @@ public class MateriaCrafting {
                 'x', materiaStack, 'y', diamondstack);
         GameRegistry.addRecipe(new ItemStack(MateriaBlocks.bluemateriaBrick, 8), "xxx", "xyx", "xxx", 
                 'x', brickstack, 'y', materiaStack);
+        GameRegistry.addRecipe(new ItemStack(MateriaBlocks.blockMateriaFurnaceIdle), "xxx", "xyx", "xxx", 
+                'x', materiaStack, 'y', furnace);
         
         //tools
         GameRegistry.addRecipe(new ItemStack(MateriaItems.MateriaPickaxe), "xxx", " y ", " y ", 
