@@ -45,6 +45,8 @@ public class mainRegistry
 	
 	public static final int guiIdMateriaFurnace = 0; 
 	
+	public static final int guiIdBlueMateriaChest = 1; 
+	
 	
 	
     @SidedProxy(clientSide="com.gmail.rickvinke1.Materia.client.ClientProxy", serverSide="com.gmail.rickvinke1.Materia.server.ServerProxy")

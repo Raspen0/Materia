@@ -5,7 +5,9 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 
 import com.gmail.rickvinke1.Materia.mainRegistry;
+import com.gmail.rickvinke1.Materia.Container.ContainerBlueMateriaChest;
 import com.gmail.rickvinke1.Materia.Container.ContainerMateriaFurnace;
+import com.gmail.rickvinke1.Materia.tile_entity.TileEntityBlueMateriaChest;
 import com.gmail.rickvinke1.Materia.tile_entity.TileEntityMateriaFurnace;
 
 import cpw.mods.fml.common.network.IGuiHandler;
@@ -31,11 +33,16 @@ public class GuiHandler implements IGuiHandler {
 					if(entity instanceof TileEntityMateriaFurnace){
 						return new ContainerMateriaFurnace(player.inventory, (TileEntityMateriaFurnace) entity);
 				}
+				case mainRegistry.guiIdBlueMateriaChest:
+					if(entity instanceof TileEntityBlueMateriaChest){
+						return new ContainerBlueMateriaChest(player.inventory, (TileEntityBlueMateriaChest) entity);
+					}
 			}
 		}
 		
 		return null;
-	}
+		}
+	
 
 	public Object getClientGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
 		TileEntity entity = world.getTileEntity(x, y, z);
@@ -45,7 +52,12 @@ public class GuiHandler implements IGuiHandler {
 				case mainRegistry.guiIdMateriaFurnace:
 					if(entity instanceof TileEntityMateriaFurnace){
 						return new GuiMateriaFurnace(player.inventory, (TileEntityMateriaFurnace) entity);
-				}
+					}
+					case mainRegistry.guiIdBlueMateriaChest:
+						if(entity instanceof TileEntityBlueMateriaChest){
+							return new ContainerBlueMateriaChest(player.inventory, (TileEntityBlueMateriaChest) entity);
+						}
+				
 			}
 		}
 		

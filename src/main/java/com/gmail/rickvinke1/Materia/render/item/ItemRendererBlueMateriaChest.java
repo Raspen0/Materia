@@ -1,11 +1,12 @@
+//Renders the Inventory Icon of the chest
 package com.gmail.rickvinke1.Materia.render.item;
-
-import com.gmail.rickvinke1.Materia.tile_entity.TileEntityBlueMateriaChest;
 
 import net.minecraft.client.model.ModelChest;
 import net.minecraft.client.renderer.tileentity.TileEntityRendererDispatcher;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.client.IItemRenderer;
+
+import com.gmail.rickvinke1.Materia.tile_entity.TileEntityBlueMateriaChest;
 
 public class ItemRendererBlueMateriaChest implements IItemRenderer {
 	
