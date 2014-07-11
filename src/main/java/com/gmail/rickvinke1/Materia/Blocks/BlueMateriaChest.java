@@ -73,7 +73,7 @@ public class BlueMateriaChest extends BlockContainer
      */
     public int getRenderType()
     {
-        return 22;
+        return 0;
     }
 
     /**
@@ -106,102 +106,29 @@ public class BlueMateriaChest extends BlockContainer
     /**
      * Called whenever the block is added into the world. Args: world, x, y, z
      */
-    public void onBlockAdded(World world, int x, int y, int z)
-    {
-        super.onBlockAdded(world, x, y, z);
-        this.func_149954_e(world, x, y, z);
-        Block block = world.getBlock(x, y, z - 1);
-        Block block1 = world.getBlock(x, y, z + 1);
-        Block block2 = world.getBlock(x - 1, y, z);
-        Block block3 = world.getBlock(x + 1, y, z);
-
-        if (block == this)
-        {
-            this.func_149954_e(world, x, y, z - 1);
-        }
-
-        if (block1 == this)
-        {
-            this.func_149954_e(world, x, y, z + 1);
-        }
-
-        if (block2 == this)
-        {
-            this.func_149954_e(world, x - 1, y, z);
-        }
-
-        if (block3 == this)
-        {
-            this.func_149954_e(world, x + 1, y, z);
-        }
-    }
+	public void onBlockAdded(World world, int x, int y, int z){
+		super.onBlockAdded(world, x, y, z);
+		this.setDefaultDirection(world, x, y,z);
+	}
 
     /**
      * Called when the block is placed in the world.
      */
-    public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase Entity, ItemStack itemstack)
-    {
-        Block block = world.getBlock(x, y, z - 1);
-        Block block1 = world.getBlock(x, y, z + 1);
-        Block block2 = world.getBlock(x - 1, y, z);
-        Block block3 = world.getBlock(x + 1, y, z);
-        byte b0 = 0;
-        int l = MathHelper.floor_double((double)(Entity.rotationYaw * 4.0F / 360.0F) + 0.5D) & 3;
-
-        if (l == 0)
-        {
-            b0 = 2;
-        }
-
-        if (l == 1)
-        {
-            b0 = 5;
-        }
-
-        if (l == 2)
-        {
-            b0 = 3;
-        }
-
-        if (l == 3)
-        {
-            b0 = 4;
-        }
-
-        if (block != this && block1 != this && block2 != this && block3 != this)
-        {
-            world.setBlockMetadataWithNotify(x, y, z, b0, 3);
-        }
-        else
-        {
-            if ((block == this || block1 == this) && (b0 == 4 || b0 == 5))
-            {
-                if (block == this)
-                {
-                    world.setBlockMetadataWithNotify(x, y, z - 1, b0, 3);
-                }
-                else
-                {
-                    world.setBlockMetadataWithNotify(x, y, z + 1, b0, 3);
-                }
-
-                world.setBlockMetadataWithNotify(x, y, z, b0, 3);
-            }
-
-            if ((block2 == this || block3 == this) && (b0 == 2 || b0 == 3))
-            {
-                if (block2 == this)
-                {
-                    world.setBlockMetadataWithNotify(x - 1, y, z, b0, 3);
-                }
-                else
-                {
-                    world.setBlockMetadataWithNotify(x + 1, y, z, b0, 3);
-                }
-
-                world.setBlockMetadataWithNotify(x, y, z, b0, 3);
-            }
-        }
+	 public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase livingbase, ItemStack itemstack){
+		int l = MathHelper.floor_double((double)(livingbase.rotationYaw * 4.0F / 360.0F) + 0.5D) & 3;
+		
+		if(l == 0){
+			world.setBlockMetadataWithNotify(x, y, z, 2, 2);
+		}
+		if(l == 1){
+			world.setBlockMetadataWithNotify(x, y, z, 5, 2);
+		}
+		if(l == 2){
+			world.setBlockMetadataWithNotify(x, y, z, 3, 2);
+		}
+		if(l == 3){
+			world.setBlockMetadataWithNotify(x, y, z, 4, 2);
+		}
 
         if (itemstack.hasDisplayName())
         {
@@ -209,120 +136,33 @@ public class BlueMateriaChest extends BlockContainer
         }
     }
 
-    public void func_149954_e(World world, int x, int y, int z)
-    {
-        if (!world.isRemote)
-        {
-            Block block = world.getBlock(x, y, z - 1);
-            Block block1 = world.getBlock(x, y, z + 1);
-            Block block2 = world.getBlock(x - 1, y, z);
-            Block block3 = world.getBlock(x + 1, y, z);
-            boolean flag = true;
-            int l;
-            Block block4;
-            int i1;
-            Block block5;
-            boolean flag1;
-            byte b0;
-            int j1;
-
-            if (block != this && block1 != this)
-            {
-                if (block2 != this && block3 != this)
-                {
-                    b0 = 3;
-
-                    if (block.func_149730_j() && !block1.func_149730_j())
-                    {
-                        b0 = 3;
-                    }
-
-                    if (block1.func_149730_j() && !block.func_149730_j())
-                    {
-                        b0 = 2;
-                    }
-
-                    if (block2.func_149730_j() && !block3.func_149730_j())
-                    {
-                        b0 = 5;
-                    }
-
-                    if (block3.func_149730_j() && !block2.func_149730_j())
-                    {
-                        b0 = 4;
-                    }
-                }
-                else
-                {
-                    l = block2 == this ? x - 1 : x + 1;
-                    block4 = world.getBlock(l, y, z - 1);
-                    i1 = block2 == this ? x - 1 : x + 1;
-                    block5 = world.getBlock(i1, y, z + 1);
-                    b0 = 3;
-                    flag1 = true;
-
-                    if (block2 == this)
-                    {
-                        j1 = world.getBlockMetadata(x - 1, y, z);
-                    }
-                    else
-                    {
-                        j1 = world.getBlockMetadata(x + 1, y, z);
-                    }
-
-                    if (j1 == 2)
-                    {
-                        b0 = 2;
-                    }
-
-                    if ((block.func_149730_j() || block4.func_149730_j()) && !block1.func_149730_j() && !block5.func_149730_j())
-                    {
-                        b0 = 3;
-                    }
-
-                    if ((block1.func_149730_j() || block5.func_149730_j()) && !block.func_149730_j() && !block4.func_149730_j())
-                    {
-                        b0 = 2;
-                    }
-                }
-            }
-            else
-            {
-                l = block == this ? z - 1 : z + 1;
-                block4 = world.getBlock(x - 1, y, l);
-                i1 = block == this ? z - 1 : z + 1;
-                block5 = world.getBlock(x + 1, y, i1);
-                b0 = 5;
-                flag1 = true;
-
-                if (block == this)
-                {
-                    j1 = world.getBlockMetadata(x, y, z - 1);
-                }
-                else
-                {
-                    j1 = world.getBlockMetadata(x, y, z + 1);
-                }
-
-                if (j1 == 4)
-                {
-                    b0 = 4;
-                }
-
-                if ((block2.func_149730_j() || block4.func_149730_j()) && !block3.func_149730_j() && !block5.func_149730_j())
-                {
-                    b0 = 5;
-                }
-
-                if ((block3.func_149730_j() || block5.func_149730_j()) && !block2.func_149730_j() && !block4.func_149730_j())
-                {
-                    b0 = 4;
-                }
-            }
-
-            world.setBlockMetadataWithNotify(x, y, z, b0, 3);
-        }
-    }
+	 private void setDefaultDirection(World world, int x, int y, int z){
+			if(!world.isRemote){
+				Block block1 = world.getBlock(x, y, z - 1);
+				Block block2 = world.getBlock(x, y, z + 1);
+				Block block3 = world.getBlock(x - 1, y, z);
+				Block block4 = world.getBlock(x + 1, y, z);
+				byte b0 = 3;
+				
+				if(block1.func_149730_j() && !block2.func_149730_j()){
+					b0 = 3;
+				}
+				
+				if(block2.func_149730_j() && !block1.func_149730_j()){
+					b0 = 2;
+				}
+				
+				if(block3.func_149730_j() && !block4.func_149730_j()){	
+					b0 = 5;
+					}
+				
+				if(block4.func_149730_j() && !block3.func_149730_j()){	
+					b0 = 4;
+					}
+				world.setBlockMetadataWithNotify(x, y, z, b0, 2);
+			}
+		}
+    
 
     /**
      * Lets the block know when one of its neighbor changes. Doesn't know which neighbor changed (coordinates passed are
@@ -337,6 +177,11 @@ public class BlueMateriaChest extends BlockContainer
         {
             TileEntityBlueMateriaChest.updateContainingBlockInfo();
         }
+    }
+    
+    public boolean shouldSideBeRendered(IBlockAccess iblockaccess, int i, int j, int k, int l)
+    {
+       return false;
     }
 
     public void breakBlock(World world, int x, int y, int z, Block block, int i)
@@ -523,6 +368,10 @@ public class BlueMateriaChest extends BlockContainer
     {
         this.blockIcon = icon.registerIcon(Strings.MODID + ":BlueMateriaBlock");
     }
+    
+    
+    
+    
     
 	
 }
