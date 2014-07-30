@@ -23,7 +23,7 @@ public class MateriaOre extends Block
                 setBlockName("materiaOre");
                 setCreativeTab(com.gmail.rickvinke1.Materia.mainRegistry.tabMateria);
                 setBlockTextureName("Materia:blueMateriaOre");
-                this.setLightLevel(0.5F);
+                this.setLightLevel(0.1F);
                 setHarvestLevel("pickaxe",2);
         }
 

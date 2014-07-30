@@ -20,6 +20,7 @@ import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 
 import com.gmail.rickvinke1.Materia.mainRegistry;
+import com.gmail.rickvinke1.Materia.Items.MateriaItems;
 import com.gmail.rickvinke1.Materia.lib.Strings;
 import com.gmail.rickvinke1.Materia.tile_entity.TileEntityMateriaFurnace;
 
@@ -34,7 +35,8 @@ public class BlockMateriaFurnace extends BlockContainer {
 	
 	
 	@SideOnly(Side.CLIENT)
-	private IIcon iconFront;
+	public IIcon iconFront;
+	
 	
 	private static boolean keepInventory;
 	
@@ -48,11 +50,13 @@ public class BlockMateriaFurnace extends BlockContainer {
 		this.blockIcon = iconRegister.registerIcon(Strings.MODID + ":" + "materia_furnace_side");
 		this.iconFront = iconRegister.registerIcon(Strings.MODID + ":" + (this.isActive ? "materia_furnace_front_on" : "materia_furnace_front_off"));
         this.field_149935_N = iconRegister.registerIcon(Strings.MODID + ":" + "materia_furnace_top");
+        
 	}
 	@SideOnly(Side.CLIENT)
 	public IIcon getIcon(int side, int metadata){
         return metadata == 0 && side == 3 ? this.iconFront : (side == 1 ? this.field_149935_N : (side == 0 ? this.field_149935_N : (side != metadata ? this.blockIcon : this.iconFront)));
 	}
+
 	
     public Item getItemDropped(int par1, Random random, int par3){
 		return Item.getItemFromBlock(MateriaBlocks.blockMateriaFurnaceIdle);

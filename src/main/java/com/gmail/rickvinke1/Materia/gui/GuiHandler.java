@@ -15,7 +15,6 @@ import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-@SideOnly(Side.CLIENT)
 public class GuiHandler implements IGuiHandler {
 	
     public GuiHandler(){
@@ -23,7 +22,7 @@ public class GuiHandler implements IGuiHandler {
         
     }
 	
-
+	@SideOnly(Side.SERVER)
 	public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
 		TileEntity entity = world.getTileEntity(x, y, z);
 		
@@ -43,7 +42,7 @@ public class GuiHandler implements IGuiHandler {
 		return null;
 		}
 	
-
+	@SideOnly(Side.CLIENT)
 	public Object getClientGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
 		TileEntity entity = world.getTileEntity(x, y, z);
 		

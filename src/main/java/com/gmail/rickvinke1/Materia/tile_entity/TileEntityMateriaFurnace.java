@@ -36,6 +36,8 @@ public class TileEntityMateriaFurnace extends TileEntity implements ISidedInvent
 	/** Furnace Speed*/
 	public int furnaceSpeed = 125;
 	
+    public static boolean blue = false;
+	
     /** The number of ticks that the furnace will keep burning */
     public int furnaceBurnTime;
     /**
@@ -307,6 +309,20 @@ public class TileEntityMateriaFurnace extends TileEntity implements ISidedInvent
     }
 
     /**
+     * Returns true if the Materia Furnace is using a Materia fuel.
+     */
+    public final boolean BlueFlames(){
+    	if (this.blue = true){
+    		System.out.println("Test True");
+    		return true;
+	}else{
+		System.out.println("Test False");
+    	return false;
+	}
+}
+
+    
+    /**
      * Returns true if the furnace can smelt an item, i.e. has a source item, destination stack isn't full, etc.
      */
     private boolean canSmelt()
@@ -325,7 +341,16 @@ public class TileEntityMateriaFurnace extends TileEntity implements ISidedInvent
             return result <= getInventoryStackLimit() && result <= this.furnaceItemStacks[2].getMaxStackSize(); //Forge BugFix: Make it respect stack sizes properly.
         }
     }
+    //public void BlueFlames(ItemStack itemstack, Item item, EntityPlayer player)
+   // {
+  //  	if (this.isBurning()){
+  //  		if (furnaceItemStacks[2].getItem() == MateriaItems.MateriaCoal){
 
+    //	}
+
+    	
+ //   }
+ //   }
     /**
      * Turn one item from the furnace source stack into the appropriate smelted item in the furnace result stack
      */
@@ -397,7 +422,10 @@ public class TileEntityMateriaFurnace extends TileEntity implements ISidedInvent
             if (item == Items.blaze_rod) return 2400;
             
 			//Custom Fuels
-			if(item == MateriaItems.MateriaCoal) return 1800;
+			if(item == MateriaItems.MateriaCoal){
+				blue = true;
+				return 1800;
+			}
 			
             return GameRegistry.getFuelValue(itemstack);
         }

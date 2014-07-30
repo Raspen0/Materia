@@ -14,7 +14,9 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemFood;
 import net.minecraft.item.Item.ToolMaterial;
 import net.minecraft.item.ItemArmor.ArmorMaterial;
+import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.util.EnumHelper;
+import net.minecraftforge.oredict.OreDictionary;
 
 public class MateriaBlocks {
 
@@ -43,7 +45,8 @@ public class MateriaBlocks {
         if (mainRegistry.BlockBlueMateriaChest){
     	GameRegistry.registerBlock(BlueMateriaChest, "BlueMateriaChest");
         } else {}
-        GameRegistry.registerBlock(materiaOre, "MateriaOre");
+     //   OreDictionary.registerOre("materiaOre", materiaOre);
+        GameRegistry.registerBlock(materiaOre, "materiaOre");
         GameRegistry.registerBlock(materiaBlock, "MateriaBlock");
         GameRegistry.registerBlock(bluemateriaBrick, "BlueMateriaBrick");
         GameRegistry.registerBlock(materiaredOre, "materiaredOre");
