@@ -33,8 +33,11 @@ public class CrusherRecipes
 
     private CrusherRecipes()
     {
+        ItemStack RedDust = new ItemStack(MateriaItems.Materiadust);
+        RedDust.setItemDamage(1);
         this.CrusherBlockRecipe(Blocks.iron_ore, new ItemStack(Items.iron_ingot, 2), 0.4F);
         this.CrusherBlockRecipe(MateriaBlocks.materiaOre, new ItemStack(MateriaItems.Materiadust, 2), 0.7F);
+        this.CrusherBlockRecipe(MateriaBlocks.materiaredOre, new ItemStack(MateriaItems.Materiadust, 2, 1), 0.7F);
 
     }
 

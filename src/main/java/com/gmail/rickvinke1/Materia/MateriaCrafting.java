@@ -58,10 +58,16 @@ public class MateriaCrafting {
             ItemStack RedOrestack = new ItemStack(MateriaBlocks.materiaredOre);
             ItemStack RedmateriaStack = new ItemStack(MateriaItems.MateriaIngot);
             ItemStack BluemateriaStack = new ItemStack(MateriaItems.MateriaIngot);
+            ItemStack RedDust = new ItemStack(MateriaItems.Materiadust);
+            ItemStack BlueDust = new ItemStack(MateriaItems.Materiadust);
             RedmateriaStack.setItemDamage(1);
+            RedDust.setItemDamage(1);
+            BlueDust.setItemDamage(0);
         GameRegistry.addSmelting(BlueOrestack, BluemateriaStack, 0.1f);
         GameRegistry.addSmelting(RedOrestack, RedmateriaStack, 0.3f);
-        GameRegistry.addSmelting(MateriaItems.Materiadust, BluemateriaStack, 0);
+        GameRegistry.addSmelting(RedDust, RedmateriaStack, 0);
+        GameRegistry.addSmelting(BlueDust, BluemateriaStack, 0);
+
     }
 
 }

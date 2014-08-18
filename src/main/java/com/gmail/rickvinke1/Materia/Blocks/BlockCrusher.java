@@ -41,15 +41,15 @@ public class BlockCrusher extends BlockContainer {
 	private static boolean keepInventory;
 	
 	public BlockCrusher(boolean isActive) {
-		super(Material.rock);
+		super(Material.iron);
 		
 		this.isActive = isActive;
 	}
 	@SideOnly(Side.CLIENT)
 	public void registerBlockIcons(IIconRegister iconRegister){
-		this.blockIcon = iconRegister.registerIcon(Strings.MODID + ":" + "materia_furnace_side");
-		this.iconFront = iconRegister.registerIcon(Strings.MODID + ":" + (this.isActive ? "materia_furnace_front_on" : "materia_furnace_front_off"));
-        this.field_149935_N = iconRegister.registerIcon(Strings.MODID + ":" + "materia_furnace_top");
+		this.blockIcon = iconRegister.registerIcon(Strings.MODID + ":" + "crusher_side");
+		this.iconFront = iconRegister.registerIcon(Strings.MODID + ":" + (this.isActive ? "crusher_front_on" : "crusher_front_off"));
+        this.field_149935_N = iconRegister.registerIcon(Strings.MODID + ":" + "crusher_top");
         
 	}
 	@SideOnly(Side.CLIENT)

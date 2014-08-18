@@ -34,7 +34,7 @@ public class TileEntityCrusher extends TileEntity implements ISidedInventory
     private ItemStack[] CrusherItemStacks = new ItemStack[3];
     
 	/** Furnace Speed*/
-	public int crusherspeed = 100;
+	public int crusherspeed = 150;
 	
     /** The number of ticks that the furnace will keep burning */
     public int crusherBurnTime;
