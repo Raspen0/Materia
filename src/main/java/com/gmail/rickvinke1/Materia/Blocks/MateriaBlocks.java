@@ -33,11 +33,16 @@ public class MateriaBlocks {
     public final static Block bluemateriaBrick = new blueMateriaBrick(Material.rock);
     public static Block blockMateriaFurnaceIdle;
     public static Block blockMateriaFurnaceActive;
+    public static Block blockCrusherIdle;
+    public static Block blockCrusherActive;
     
     public static void initBlocks(){
         if (mainRegistry.BlockMateriaFurnace){
     	blockMateriaFurnaceIdle = new BlockMateriaFurnace(false).setBlockName("MateriaFurnaceIdle").setHardness(3.5F).setCreativeTab(com.gmail.rickvinke1.Materia.mainRegistry.tabMateria);
     	blockMateriaFurnaceActive = new BlockMateriaFurnace(true).setBlockName("MateriaFurnaceActive").setHardness(3.5F).setLightLevel(0.9F);
+    	
+    	blockCrusherIdle = new BlockCrusher(false).setBlockName("CrusherIdle").setHardness(3.5F).setCreativeTab(com.gmail.rickvinke1.Materia.mainRegistry.tabMateria);
+    	blockCrusherActive = new BlockCrusher(true).setBlockName("CrusherActive").setHardness(3.5F);
         } else {}
     }
     
@@ -53,6 +58,9 @@ public class MateriaBlocks {
 
         GameRegistry.registerBlock(blockMateriaFurnaceIdle, "Materia Furnace");
         GameRegistry.registerBlock(blockMateriaFurnaceActive, "Materia Furnace Active");
+        
+        GameRegistry.registerBlock(blockCrusherIdle, "Crusher");
+        GameRegistry.registerBlock(blockCrusherActive, "Crusher Active");
 
     	
     }

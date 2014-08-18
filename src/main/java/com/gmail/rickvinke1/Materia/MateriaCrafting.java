@@ -61,6 +61,7 @@ public class MateriaCrafting {
             RedmateriaStack.setItemDamage(1);
         GameRegistry.addSmelting(BlueOrestack, BluemateriaStack, 0.1f);
         GameRegistry.addSmelting(RedOrestack, RedmateriaStack, 0.3f);
+        GameRegistry.addSmelting(MateriaItems.Materiadust, BluemateriaStack, 0);
     }
 
 }

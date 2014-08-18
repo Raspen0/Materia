@@ -6,8 +6,10 @@ import net.minecraft.world.World;
 
 import com.gmail.rickvinke1.Materia.mainRegistry;
 import com.gmail.rickvinke1.Materia.Container.ContainerBlueMateriaChest;
+import com.gmail.rickvinke1.Materia.Container.ContainerCrusher;
 import com.gmail.rickvinke1.Materia.Container.ContainerMateriaFurnace;
 import com.gmail.rickvinke1.Materia.tile_entity.TileEntityBlueMateriaChest;
+import com.gmail.rickvinke1.Materia.tile_entity.TileEntityCrusher;
 import com.gmail.rickvinke1.Materia.tile_entity.TileEntityMateriaFurnace;
 
 import cpw.mods.fml.common.network.IGuiHandler;
@@ -22,7 +24,6 @@ public class GuiHandler implements IGuiHandler {
         
     }
 	
-	@SideOnly(Side.SERVER)
 	public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
 		TileEntity entity = world.getTileEntity(x, y, z);
 		
@@ -36,11 +37,14 @@ public class GuiHandler implements IGuiHandler {
 					if(entity instanceof TileEntityBlueMateriaChest){
 						return new ContainerBlueMateriaChest(player.inventory, (TileEntityBlueMateriaChest) entity);
 					}
+			case mainRegistry.guiIdCrusher:
+				if(entity instanceof TileEntityCrusher){
+					return new ContainerCrusher(player.inventory, (TileEntityCrusher) entity);
 			}
 		}
-		
-		return null;
 		}
+		return null;
+	}
 	
 	@SideOnly(Side.CLIENT)
 	public Object getClientGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
@@ -55,6 +59,10 @@ public class GuiHandler implements IGuiHandler {
 					case mainRegistry.guiIdBlueMateriaChest:
 						if(entity instanceof TileEntityBlueMateriaChest){
 							return new ContainerBlueMateriaChest(player.inventory, (TileEntityBlueMateriaChest) entity);
+						}
+					case mainRegistry.guiIdCrusher:
+						if(entity instanceof TileEntityCrusher){
+							return new GuiCrusher(player.inventory, (TileEntityCrusher) entity);
 						}
 				
 			}
