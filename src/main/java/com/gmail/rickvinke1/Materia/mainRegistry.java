@@ -74,6 +74,7 @@ public class mainRegistry
 	public static boolean BlockMateriaFurnace = true;
 	public static boolean BlueMateriaOreGen = true;
 	public static boolean RedMateriaOreGen = true;
+	public static boolean HQTextures = true;
 	
     @EventHandler
     public void PreLoad(FMLPreInitializationEvent Event)
@@ -99,8 +100,7 @@ public class mainRegistry
     	BlueMateriaOreGen = configFile.get(CATEGORY_WORLDGEN, "Generate BlueMateria Ore", true).getBoolean(true);
     	RedMateriaOreGen = configFile.get(CATEGORY_WORLDGEN, "Generate RedMateria Ore", true).getBoolean(true);
     	configFile.addCustomCategoryComment("experimental", "These settings are experimental, It is advised to backup your world before using!");
-    	BlockBlueMateriaChest = configFile.get(CATEGORY_DEV, "BlueMateriaChest", true).getBoolean(true);
-    	BlockMateriaFurnace = configFile.get(CATEGORY_DEV, "Materia Furnace", true).getBoolean(true);
+    	HQTextures = configFile.get(Configuration.CATEGORY_GENERAL, "High Quality Textures", true).getBoolean(true);
 
     	
     	

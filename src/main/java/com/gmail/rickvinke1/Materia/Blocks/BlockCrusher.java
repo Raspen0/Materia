@@ -47,9 +47,15 @@ public class BlockCrusher extends BlockContainer {
 	}
 	@SideOnly(Side.CLIENT)
 	public void registerBlockIcons(IIconRegister iconRegister){
-		this.blockIcon = iconRegister.registerIcon(Strings.MODID + ":" + "crusher_side");
-		this.iconFront = iconRegister.registerIcon(Strings.MODID + ":" + (this.isActive ? "crusher_front_on" : "crusher_front_off"));
-        this.field_149935_N = iconRegister.registerIcon(Strings.MODID + ":" + "crusher_top");
+        if (mainRegistry.HQTextures){
+		this.blockIcon = iconRegister.registerIcon(Strings.MODID + ":" + "crusher_side 32x");
+		this.iconFront = iconRegister.registerIcon(Strings.MODID + ":" + (this.isActive ? "crusher_front_on 32x" : "crusher_front_off 32x"));
+        this.field_149935_N = iconRegister.registerIcon(Strings.MODID + ":" + "crusher_top 32x");
+        } else {
+    		this.blockIcon = iconRegister.registerIcon(Strings.MODID + ":" + "crusher_side");
+    		this.iconFront = iconRegister.registerIcon(Strings.MODID + ":" + (this.isActive ? "crusher_front_on" : "crusher_front_off"));
+            this.field_149935_N = iconRegister.registerIcon(Strings.MODID + ":" + "crusher_top");
+        }
         
 	}
 	@SideOnly(Side.CLIENT)
