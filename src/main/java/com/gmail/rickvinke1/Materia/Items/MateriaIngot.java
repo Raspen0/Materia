@@ -61,4 +61,19 @@ public class MateriaIngot extends Item {
 	        par3List.add(new ItemStack(this, 1, x));
 	    }
 	}
+	
+	
+    public boolean hasEffect(ItemStack itemstack)
+    {
+        if (itemstack.getItemDamage() == 1)
+        {
+            return true; 	
+        }
+
+    else
+    {
+		return false;
+    }
+    }
+	
 }

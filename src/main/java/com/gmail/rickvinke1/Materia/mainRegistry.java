@@ -128,7 +128,6 @@ public class mainRegistry
     public void PostLoad(FMLPostInitializationEvent PostEvent)
     {
     	
-    	
     }
     
     

@@ -5,6 +5,7 @@ import com.gmail.rickvinke1.Materia.Items.MateriaItems;
 import cpw.mods.fml.client.registry.RenderingRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockSlab;
 import net.minecraft.block.material.Material;
 
 import com.gmail.rickvinke1.Materia.*;
@@ -35,15 +36,20 @@ public class MateriaBlocks {
     public static Block blockMateriaFurnaceActive;
     public static Block blockCrusherIdle;
     public static Block blockCrusherActive;
+    public static Block materiaBlockHalfSlab;
+    public static Block materiaBlockDoubleSlab;
     
     public static void initBlocks(){
         if (mainRegistry.BlockMateriaFurnace){
     	blockMateriaFurnaceIdle = new BlockMateriaFurnace(false).setBlockName("MateriaFurnaceIdle").setHardness(3.5F).setCreativeTab(com.gmail.rickvinke1.Materia.mainRegistry.tabMateria);
     	blockMateriaFurnaceActive = new BlockMateriaFurnace(true).setBlockName("MateriaFurnaceActive").setHardness(3.5F).setLightLevel(0.9F);
-    	
+        } else {}
     	blockCrusherIdle = new BlockCrusher(false).setBlockName("CrusherIdle").setHardness(3.5F).setCreativeTab(com.gmail.rickvinke1.Materia.mainRegistry.tabMateria);
     	blockCrusherActive = new BlockCrusher(true).setBlockName("CrusherActive").setHardness(3.5F);
-        } else {}
+    	
+    	materiaBlockHalfSlab = new BlockMateriaSlab(false, materiaBlock, Material.iron).setBlockName("slabMateriaBlock");
+    	materiaBlockDoubleSlab = new BlockMateriaSlab(true, materiaBlock, Material.iron).setBlockName("doubleslabMateriaBlock");
+
     }
     
     public static void registerBlocks(){
@@ -61,6 +67,9 @@ public class MateriaBlocks {
         
         GameRegistry.registerBlock(blockCrusherIdle, "Crusher");
         GameRegistry.registerBlock(blockCrusherActive, "Crusher Active");
+        
+        GameRegistry.registerBlock(materiaBlockHalfSlab, "Materia Slab");
+        GameRegistry.registerBlock(materiaBlockDoubleSlab, "Materia DoubleSlab");
 
     	
     }
