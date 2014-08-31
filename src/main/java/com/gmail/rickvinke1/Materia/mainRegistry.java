@@ -120,8 +120,7 @@ public class mainRegistry
     public void load(FMLInitializationEvent event)
     {
     	FMLCommonHandler.instance().bus().register(instance);
-    	
-    	
+        OreDictionaryRegistry.mainRegistry();	
     }
     
     @EventHandler

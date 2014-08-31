@@ -36,7 +36,8 @@ public class MateriaBlocks {
     public static Block blockMateriaFurnaceActive;
     public static Block blockCrusherIdle;
     public static Block blockCrusherActive;
-
+    public static Block materiaBlockHalfSlab;
+    public static Block materiaBlockDoubleSlab;
     
     public static void initBlocks(){
         if (mainRegistry.BlockMateriaFurnace){
@@ -46,7 +47,8 @@ public class MateriaBlocks {
     	blockCrusherIdle = new BlockCrusher(false).setBlockName("CrusherIdle").setHardness(3.5F).setCreativeTab(com.gmail.rickvinke1.Materia.mainRegistry.tabMateria);
     	blockCrusherActive = new BlockCrusher(true).setBlockName("CrusherActive").setHardness(3.5F);
     	
-
+    	materiaBlockHalfSlab = new BlockMateriaSlab(false, materiaBlock, Material.iron).setBlockName("slabMateriaBlock");
+    	materiaBlockDoubleSlab = new BlockMateriaSlab(true, materiaBlock, Material.iron).setBlockName("doubleslabMateriaBlock");
 
     }
     
@@ -54,7 +56,10 @@ public class MateriaBlocks {
         if (mainRegistry.BlockBlueMateriaChest){
     	GameRegistry.registerBlock(BlueMateriaChest, "BlueMateriaChest");
         } else {}
-     //   OreDictionary.registerOre("materiaOre", materiaOre);
+        
+        
+        
+        
         GameRegistry.registerBlock(materiaOre, "materiaOre");
         GameRegistry.registerBlock(materiaBlock, "MateriaBlock");
         GameRegistry.registerBlock(bluemateriaBrick, "BlueMateriaBrick");
@@ -66,6 +71,8 @@ public class MateriaBlocks {
         GameRegistry.registerBlock(blockCrusherIdle, "Crusher");
         GameRegistry.registerBlock(blockCrusherActive, "Crusher Active");
         
+        GameRegistry.registerBlock(materiaBlockHalfSlab, "Materia Slab");
+        GameRegistry.registerBlock(materiaBlockDoubleSlab, "Materia DoubleSlab");
 
     	
     }
