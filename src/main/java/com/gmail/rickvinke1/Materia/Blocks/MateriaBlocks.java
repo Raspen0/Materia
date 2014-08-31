@@ -27,7 +27,7 @@ public class MateriaBlocks {
     	initBlocks();
     	registerBlocks();
     }
-    public static Block BlueMateriaChest = new BlueMateriaChest(0).setBlockName("BlueMateriaChest").setBlockTextureName("Materia:BlueMateriaChest.png").setCreativeTab(com.gmail.rickvinke1.Materia.mainRegistry.tabMateria);
+    public static Block BlueMateriaChest = new BlueMateriaChest(0).setBlockName("BlueMateriaChest").setBlockTextureName("Materia:BlueMateriaChest.png").setCreativeTab(com.gmail.rickvinke1.Materia.CreativeTab.tabMateria);
     public final static Block materiaOre = new MateriaOre(Material.rock);
     public final static Block materiaredOre = new MateriaredOre(Material.rock);
     public final static Block materiaBlock = new MateriaBlock(Material.iron);
@@ -41,10 +41,10 @@ public class MateriaBlocks {
     
     public static void initBlocks(){
         if (mainRegistry.BlockMateriaFurnace){
-    	blockMateriaFurnaceIdle = new BlockMateriaFurnace(false).setBlockName("MateriaFurnaceIdle").setHardness(3.5F).setCreativeTab(com.gmail.rickvinke1.Materia.mainRegistry.tabMateria);
+    	blockMateriaFurnaceIdle = new BlockMateriaFurnace(false).setBlockName("MateriaFurnaceIdle").setHardness(3.5F).setCreativeTab(com.gmail.rickvinke1.Materia.CreativeTab.tabMateria);
     	blockMateriaFurnaceActive = new BlockMateriaFurnace(true).setBlockName("MateriaFurnaceActive").setHardness(3.5F).setLightLevel(0.9F);
         } else {}
-    	blockCrusherIdle = new BlockCrusher(false).setBlockName("CrusherIdle").setHardness(3.5F).setCreativeTab(com.gmail.rickvinke1.Materia.mainRegistry.tabMateria);
+    	blockCrusherIdle = new BlockCrusher(false).setBlockName("CrusherIdle").setHardness(3.5F).setCreativeTab(com.gmail.rickvinke1.Materia.CreativeTab.tabMateria);
     	blockCrusherActive = new BlockCrusher(true).setBlockName("CrusherActive").setHardness(3.5F);
     	
     	materiaBlockHalfSlab = new BlockMateriaSlab(false, materiaBlock, Material.iron).setBlockName("slabMateriaBlock");

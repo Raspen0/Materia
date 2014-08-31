@@ -6,6 +6,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 import java.util.Iterator;
 import java.util.Random;
 
+import com.gmail.rickvinke1.Materia.CreativeTab;
 import com.gmail.rickvinke1.Materia.mainRegistry;
 import com.gmail.rickvinke1.Materia.lib.Strings;
 import com.gmail.rickvinke1.Materia.tile_entity.TileEntityBlueMateriaChest;
@@ -42,7 +43,7 @@ public class BlueMateriaChest extends BlockContainer
     {
         super(Material.iron);
         this.field_149956_a = i;
-        this.setCreativeTab(mainRegistry.tabMateria);
+        this.setCreativeTab(CreativeTab.tabMateria);
         this.setBlockBounds(0.0625F, 0.0F, 0.0625F, 0.9375F, 0.875F, 0.9375F);
     }
     

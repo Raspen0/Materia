@@ -19,7 +19,7 @@ public class MateriaDust extends Item {
 
 	public MateriaDust() {
 		this.setHasSubtypes(true);
-        setCreativeTab(com.gmail.rickvinke1.Materia.mainRegistry.tabMateria);
+        setCreativeTab(com.gmail.rickvinke1.Materia.CreativeTab.tabMateria);
         setUnlocalizedName("materiaDust");
 }
 	public static final String[] names = new String[] { "Blue", "Red" };

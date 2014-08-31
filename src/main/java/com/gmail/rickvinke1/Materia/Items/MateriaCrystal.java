@@ -7,7 +7,7 @@ import com.gmail.rickvinke1.Materia.Blocks.MateriaBlocks;
 public class MateriaCrystal extends Item {
 
 	public MateriaCrystal() {
-        setCreativeTab(com.gmail.rickvinke1.Materia.mainRegistry.tabMateria);
+        setCreativeTab(com.gmail.rickvinke1.Materia.CreativeTab.tabMateria);
         setUnlocalizedName("materiaCrystal");
         setTextureName("Materia:blueMateriaCrystal");
 }

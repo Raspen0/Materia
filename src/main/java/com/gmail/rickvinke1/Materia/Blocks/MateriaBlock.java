@@ -18,7 +18,7 @@ public class MateriaBlock extends Block
                 setHardness(4.0F); // 33% harder than diamond
                 setStepSound(Block.soundTypeMetal);
                 setBlockName("materiaBlock");
-                setCreativeTab(com.gmail.rickvinke1.Materia.mainRegistry.tabMateria);
+                setCreativeTab(com.gmail.rickvinke1.Materia.CreativeTab.tabMateria);
                 setBlockTextureName("Materia:blueMateriaBlock");
         }
         @Override

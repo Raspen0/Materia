@@ -19,7 +19,7 @@ public class MateriaIngot extends Item {
 
 	public MateriaIngot() {
 		this.setHasSubtypes(true);
-        setCreativeTab(com.gmail.rickvinke1.Materia.mainRegistry.tabMateria);
+        setCreativeTab(com.gmail.rickvinke1.Materia.CreativeTab.tabMateria);
         setUnlocalizedName("materiaIngot");
 }
 	public static final String[] names = new String[] { "Blue", "Red" };

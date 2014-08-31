@@ -10,6 +10,8 @@ import net.minecraftforge.common.config.Configuration;
 
 import com.gmail.rickvinke1.Materia.Blocks.MateriaBlocks;
 import com.gmail.rickvinke1.Materia.Items.MateriaItems;
+import com.gmail.rickvinke1.Materia.Recipes.CraftingTableRecipes;
+import com.gmail.rickvinke1.Materia.Recipes.FurnaceRecipes;
 import com.gmail.rickvinke1.Materia.generation.MateriaWorld;
 
 
@@ -60,12 +62,7 @@ public class mainRegistry
     public static ModMetadata meta;
     
     
-    public static CreativeTabs tabMateria = new CreativeTabs("Materia"){
-    	public Item getTabIconItem(){
-    		return MateriaItems.MateriaIngot;
-    	}
-    	
-    };
+
     
     //config
     public static final String CATEGORY_WORLDGEN = "worldgen";
@@ -82,12 +79,10 @@ public class mainRegistry
     	configFile = new Configuration(Event.getSuggestedConfigurationFile());
     	MateriaBlocks.mainRegistry();
     	MateriaItems.mainRegistry();
-    	
-    	//LanguageRegistry.instance().addStringLocalization("container.materiaFurnace", "Materia Furnace");
-    	
     	MateriaWorld.mainRegistry();
     	TileEntityMateria.mainRegistry();
-    	MateriaCrafting.MainClass();
+    	CraftingTableRecipes.addCraftingRecipes();
+    	FurnaceRecipes.addSmeltingRecipes();
 		NetworkRegistry.INSTANCE.registerGuiHandler(this, new GuiHandler());
     	proxy.registerRenderThings();
     	syncConfig();
@@ -101,10 +96,6 @@ public class mainRegistry
     	RedMateriaOreGen = configFile.get(CATEGORY_WORLDGEN, "Generate RedMateria Ore", true).getBoolean(true);
     	configFile.addCustomCategoryComment("experimental", "These settings are experimental, It is advised to backup your world before using!");
     	HQTextures = configFile.get(Configuration.CATEGORY_GENERAL, "High Quality Textures", true).getBoolean(true);
-
-    	
-    	
-    	
         if(configFile.hasChanged())
             configFile.save();
     }

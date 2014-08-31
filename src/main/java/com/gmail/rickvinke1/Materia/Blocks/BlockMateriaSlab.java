@@ -9,6 +9,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 
+import com.gmail.rickvinke1.Materia.CreativeTab;
 import com.gmail.rickvinke1.Materia.mainRegistry;
 import com.gmail.rickvinke1.Materia.lib.Strings;
 
@@ -23,7 +24,7 @@ public class BlockMateriaSlab extends BlockSlab {
 		super(fullBlock, material);
 		
 		if(!fullBlock){
-			this.setCreativeTab(mainRegistry.tabMateria);
+			this.setCreativeTab(CreativeTab.tabMateria);
 	            this.opaque = true;
 	        }
 	        else

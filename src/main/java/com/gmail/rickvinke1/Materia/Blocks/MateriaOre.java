@@ -21,7 +21,7 @@ public class MateriaOre extends Block
                 setHardness(4.0F); // 33% harder than diamond
                 setStepSound(Block.soundTypeStone);
                 setBlockName("materiaOre");
-                setCreativeTab(com.gmail.rickvinke1.Materia.mainRegistry.tabMateria);
+                setCreativeTab(com.gmail.rickvinke1.Materia.CreativeTab.tabMateria);
                 setBlockTextureName("Materia:blueMateriaOre");
                 this.setLightLevel(0.1F);
                 setHarvestLevel("pickaxe",2);

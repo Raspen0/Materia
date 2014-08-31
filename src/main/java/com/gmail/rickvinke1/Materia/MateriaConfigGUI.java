@@ -10,8 +10,8 @@ public class MateriaConfigGUI extends GuiConfig {
     public MateriaConfigGUI(GuiScreen parent) {
         super(parent,
                 new ConfigElement(mainRegistry.configFile.getCategory(mainRegistry.CATEGORY_WORLDGEN)).getChildElements(), 
-                "Materia", false, false, GuiConfig.getAbridgedConfigPath(mainRegistry.configFile.toString()));
-
+                "Materia", false, true, GuiConfig.getAbridgedConfigPath(mainRegistry.configFile.toString()));
+    
         	       
         
        

@@ -20,7 +20,7 @@ public class blueMateriaBrick extends Block
                 setHardness(4.0F); // 33% harder than diamond
                 setStepSound(Block.soundTypeStone);
                 setBlockName("blueMateriaBricks");
-                setCreativeTab(com.gmail.rickvinke1.Materia.mainRegistry.tabMateria);
+                setCreativeTab(com.gmail.rickvinke1.Materia.CreativeTab.tabMateria);
                 setBlockTextureName("Materia:blueMateriaBricks");
                 this.setLightLevel(0.5F);
                 setHarvestLevel("pickaxe",2);

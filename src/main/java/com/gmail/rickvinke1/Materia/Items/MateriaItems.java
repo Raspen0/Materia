@@ -52,11 +52,11 @@ public class MateriaItems {
         MateriaIngot = new com.gmail.rickvinke1.Materia.Items.MateriaIngot();
         MateriaCrystal = new com.gmail.rickvinke1.Materia.Items.MateriaCrystal();
         Materiadust = new com.gmail.rickvinke1.Materia.Items.MateriaDust();
-        MateriaPickaxe = new CustomPickaxe(BlueMateria).setUnlocalizedName("MateriaPickaxe").setCreativeTab(com.gmail.rickvinke1.Materia.mainRegistry.tabMateria).setTextureName("Materia:blueMateriaPickaxe");
-        MateriaSword = new CustomSword(BlueMateria).setUnlocalizedName("MateriaSword").setCreativeTab(com.gmail.rickvinke1.Materia.mainRegistry.tabMateria).setTextureName("Materia:blueMateriaSword");
-        MateriaShovel = new CustomShovel(BlueMateria).setUnlocalizedName("MateriaShovel").setCreativeTab(com.gmail.rickvinke1.Materia.mainRegistry.tabMateria).setTextureName("Materia:blueMateriaShovel");
-        MateriaHoe = new CustomHoe(BlueMateria).setUnlocalizedName("MateriaHoe").setCreativeTab(com.gmail.rickvinke1.Materia.mainRegistry.tabMateria).setTextureName("Materia:blueMateriaHoe");
-        MateriaAxe = new CustomAxe(BlueMateria).setUnlocalizedName("MateriaAxe").setCreativeTab(com.gmail.rickvinke1.Materia.mainRegistry.tabMateria).setTextureName("Materia:blueMateriaAxe");
+        MateriaPickaxe = new CustomPickaxe(BlueMateria).setUnlocalizedName("MateriaPickaxe").setCreativeTab(com.gmail.rickvinke1.Materia.CreativeTab.tabMateria).setTextureName("Materia:blueMateriaPickaxe");
+        MateriaSword = new CustomSword(BlueMateria).setUnlocalizedName("MateriaSword").setCreativeTab(com.gmail.rickvinke1.Materia.CreativeTab.tabMateria).setTextureName("Materia:blueMateriaSword");
+        MateriaShovel = new CustomShovel(BlueMateria).setUnlocalizedName("MateriaShovel").setCreativeTab(com.gmail.rickvinke1.Materia.CreativeTab.tabMateria).setTextureName("Materia:blueMateriaShovel");
+        MateriaHoe = new CustomHoe(BlueMateria).setUnlocalizedName("MateriaHoe").setCreativeTab(com.gmail.rickvinke1.Materia.CreativeTab.tabMateria).setTextureName("Materia:blueMateriaHoe");
+        MateriaAxe = new CustomAxe(BlueMateria).setUnlocalizedName("MateriaAxe").setCreativeTab(com.gmail.rickvinke1.Materia.CreativeTab.tabMateria).setTextureName("Materia:blueMateriaAxe");
         MateriaCoal = new com.gmail.rickvinke1.Materia.Items.MateriaCoal();
     }
     
