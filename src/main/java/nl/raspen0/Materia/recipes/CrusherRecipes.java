@@ -18,38 +18,39 @@ import nl.raspen0.Materia.items.MateriaItems;
 
 public class CrusherRecipes
 {
-    private static final CrusherRecipes smeltingBase = new CrusherRecipes();
+    private static final CrusherRecipes instance = new CrusherRecipes();
     /** The list of smelting results. */
     private Map smeltingList = new HashMap();
     private Map experienceList = new HashMap();
     private static final String __OBFID = "CL_00000085";
+    private final HashMap<String, ItemStack[]> inputList = new HashMap<String, ItemStack[]>();
 
     /**
      * Used to call methods addSmelting and getSmeltingResult.
      */
     public static CrusherRecipes crushing()
     {
-        return smeltingBase;
+        return instance;
     }
 
     private CrusherRecipes()
     {
         ItemStack RedDust = new ItemStack(MateriaItems.Materiadust);
         RedDust.setItemDamage(1);
-        this.CrusherBlockRecipe(Blocks.iron_ore, new ItemStack(Items.iron_ingot, 2), 0.4F);
-        this.CrusherBlockRecipe(MateriaBlocks.materiaOre, new ItemStack(MateriaItems.Materiadust, 2), 0.7F);
-        this.CrusherBlockRecipe(MateriaBlocks.materiaredOre, new ItemStack(MateriaItems.Materiadust, 2, 1), 0.7F);
+        addRecipe(Blocks.iron_ore, new ItemStack(Items.iron_ingot, 2), 0.4F);
+        addRecipe(MateriaBlocks.materiaOre, new ItemStack(MateriaItems.Materiadust, 2), 0.7F);
+        addRecipe(MateriaBlocks.materiaredOre, new ItemStack(MateriaItems.Materiadust, 2, 1), 0.7F);
 
     }
 
-    public void CrusherBlockRecipe(Block materiaredore, ItemStack itemStack, float f1)
+    public void addRecipe(Block block, ItemStack itemStack, float f1)
     {
-       this.CrusherItemRecipe(Item.getItemFromBlock(materiaredore), itemStack, f1);
+       this.addRecipe(Item.getItemFromBlock(block), itemStack, f1);
     }
 
-    public void CrusherItemRecipe(Item item, ItemStack itemstack, float f2)
+    public void addRecipe(Item item, ItemStack result, float f2)
     {
-        this.func_151394_a(new ItemStack(item, 1, 32767), itemstack, f2);
+        this.func_151394_a(new ItemStack(item, 1, 32767), result, f2);
     }
 
     public void func_151394_a(ItemStack p_151394_1_, ItemStack p_151394_2_, float p_151394_3_)
@@ -75,14 +76,14 @@ public class CrusherRecipes
 
             entry = (Entry)iterator.next();
         }
-        while (!this.func_151397_a(itemstack, (ItemStack)entry.getKey()));
+        while (!this.areItemStacksEqual(itemstack, (ItemStack)entry.getKey()));
 
         return (ItemStack)entry.getValue();
     }
 
-    private boolean func_151397_a(ItemStack p_151397_1_, ItemStack p_151397_2_)
+    private boolean areItemStacksEqual(ItemStack stack1, ItemStack stack2)
     {
-        return p_151397_2_.getItem() == p_151397_1_.getItem() && (p_151397_2_.getItemDamage() == 32767 || p_151397_2_.getItemDamage() == p_151397_1_.getItemDamage());
+        return stack2.getItem() == stack1.getItem() && (stack2.getItemDamage() == 32767 || stack2.getItemDamage() == stack1.getItemDamage());
     }
 
     public Map getSmeltingList()
@@ -107,8 +108,27 @@ public class CrusherRecipes
 
             entry = (Entry)iterator.next();
         }
-        while (!this.func_151397_a(itemstack, (ItemStack)entry.getKey()));
+        while (!this.areItemStacksEqual(itemstack, (ItemStack)entry.getKey()));
 
         return ((Float)entry.getValue()).floatValue();
+    }
+    
+    public HashMap<ItemStack, ItemStack> getInput(ItemStack itemStack)
+    {
+
+        if (itemStack == null) { return null; }
+
+        HashMap<ItemStack, ItemStack> result = new HashMap<ItemStack, ItemStack>();
+
+        ItemStack[] inputList = this.inputList.get(itemStack.getUnlocalizedName());
+
+        if (inputList == null) { return null; }
+
+        for (int i = 0; i < inputList.length; i++)
+        {
+            result.put(inputList[i], this.getCrushingResult(inputList[i]));
+        }
+
+        return result;
     }
 }

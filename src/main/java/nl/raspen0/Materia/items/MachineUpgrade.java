@@ -1,0 +1,77 @@
+package nl.raspen0.Materia.items;
+
+import java.util.List;
+
+import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.IIcon;
+import net.minecraft.util.MathHelper;
+import nl.raspen0.Materia.Strings;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+
+
+public class MachineUpgrade extends Item {
+
+	public MachineUpgrade() {
+		this.setHasSubtypes(true);
+        setCreativeTab(nl.raspen0.Materia.CreativeTab.tabMateria);
+        setUnlocalizedName("machineUpgrade");
+}
+	public static final String[] names = new String[] { "Speed"};
+	 
+    @Override
+    public String getUnlocalizedName(ItemStack par1ItemStack)
+    {
+        int i = MathHelper.clamp_int(par1ItemStack.getItemDamage(), 0, 15);
+        return super.getUnlocalizedName() + "." + names[i];
+    }
+	
+	
+	@SideOnly(Side.CLIENT)
+	private IIcon[] icons;
+	      
+	@SideOnly(Side.CLIENT)
+	public void registerIcons(IIconRegister par1IconRegister)
+	{
+	       icons = new IIcon[1];
+	            
+	       for(int i = 0; i < icons.length; i++)
+	       {
+	        icons[i] = par1IconRegister.registerIcon(Strings.MODID + ":" + (this.getUnlocalizedName().substring(5)) + i);
+	       }
+	}
+	@Override
+	@SideOnly(Side.CLIENT)
+	public IIcon getIconFromDamage(int par1)
+	{
+	       return icons[par1];
+	}
+	
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void getSubItems(Item par1, CreativeTabs par2CreativeTabs, List par3List)
+	{
+	    for (int x = 0; x < 2; x++)
+	    {
+	        par3List.add(new ItemStack(this, 1, x));
+	    }
+	}
+	
+	
+    public boolean hasEffect(ItemStack itemstack)
+    {
+        if (itemstack.getItemDamage() == 1)
+        {
+            return true; 	
+        }
+
+    else
+    {
+		return false;
+    }
+    }
+	
+}

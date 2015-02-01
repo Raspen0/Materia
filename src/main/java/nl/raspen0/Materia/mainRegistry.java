@@ -1,5 +1,8 @@
 package nl.raspen0.Materia;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.item.Item;
@@ -35,8 +38,9 @@ import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
+import cpw.mods.fml.relauncher.Side;
 
-@Mod(modid=Strings.MODID, name=Strings.name, version=Strings.version, guiFactory = "com.gmail.rickvinke1.Materia.MateriaGuiFactory")
+@Mod(modid=Strings.MODID, name=Strings.name, version=Strings.version, guiFactory = "nl.raspen0.Materia.MateriaGuiFactory")
 //@NetworkMod(clientSideRequired=true) // not used in 1.7
 public class mainRegistry
 {
@@ -52,7 +56,7 @@ public class mainRegistry
 	
 	
 	
-    @SidedProxy(clientSide="com.gmail.rickvinke1.Materia.client.ClientProxy", serverSide="com.gmail.rickvinke1.Materia.server.ServerProxy")
+    @SidedProxy(clientSide="nl.raspen0.Materia.client.ClientProxy", serverSide="nl.raspen0.Materia.server.ServerProxy")
     public static ServerProxy proxy;
     
     public static Configuration configFile;
