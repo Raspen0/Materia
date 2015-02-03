@@ -54,6 +54,8 @@ public class mainRegistry
 	
 	public static final int guiIdCrusher = 2; 
 	
+	public static final int guiIdMixer = 3; 
+	
 	
 	
     @SidedProxy(clientSide="nl.raspen0.Materia.client.ClientProxy", serverSide="nl.raspen0.Materia.server.ServerProxy")
@@ -63,7 +65,6 @@ public class mainRegistry
     
     @Metadata
     public static ModMetadata meta;
-    
     
 
     

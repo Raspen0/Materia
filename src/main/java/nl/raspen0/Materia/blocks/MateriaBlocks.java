@@ -33,6 +33,10 @@ public class MateriaBlocks {
     public static Block blockMateriaFurnaceActive;
     public static Block blockCrusherIdle;
     public static Block blockCrusherActive;
+    
+    public static Block blockMixerIdle;
+    public static Block blockMixerActive;
+    
     public static Block materiaBlockHalfSlab;
     public static Block materiaBlockDoubleSlab;
     
@@ -41,6 +45,9 @@ public class MateriaBlocks {
     	blockMateriaFurnaceActive = new BlockMateriaFurnace(true).setBlockName("MateriaFurnaceActive").setHardness(3.5F).setLightLevel(0.9F);
     	blockCrusherIdle = new BlockCrusher(false).setBlockName("CrusherIdle").setHardness(3.5F).setCreativeTab(nl.raspen0.Materia.CreativeTab.tabMateria);
     	blockCrusherActive = new BlockCrusher(true).setBlockName("CrusherActive").setHardness(3.5F);
+    	
+    //	blockMixerIdle = new BlockMixer(false).setBlockName("MixerIdle").setHardness(3.5F).setCreativeTab(nl.raspen0.Materia.CreativeTab.tabMateria);
+    //	blockMixerActive = new BlockMixer(true).setBlockName("MixerActive").setHardness(3.5F);
     	
         if (mainRegistry.MateriaSlabs){
     	materiaBlockHalfSlab = new BlockMateriaSlab(false, materiaBlock, Material.iron).setBlockName("slabMateriaBlock");
@@ -71,6 +78,9 @@ public class MateriaBlocks {
         GameRegistry.registerBlock(materiaBlockHalfSlab, "Materia Slab");
         GameRegistry.registerBlock(materiaBlockDoubleSlab, "Materia DoubleSlab");
         } else {}
+        
+   //     GameRegistry.registerBlock(blockMixerIdle, "Mixer");
+   //     GameRegistry.registerBlock(blockMixerActive, "Mixer Active");
     	
     }
 }

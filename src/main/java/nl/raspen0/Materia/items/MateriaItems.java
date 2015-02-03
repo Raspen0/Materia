@@ -80,5 +80,6 @@ public class MateriaItems {
     	GameRegistry.registerItem(MateriaCoal, "MateriaCoal");
     	
     	
+    	
     }
 }

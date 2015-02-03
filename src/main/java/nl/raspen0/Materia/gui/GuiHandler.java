@@ -7,9 +7,11 @@ import nl.raspen0.Materia.mainRegistry;
 import nl.raspen0.Materia.container.ContainerBlueMateriaChest;
 import nl.raspen0.Materia.container.ContainerCrusher;
 import nl.raspen0.Materia.container.ContainerMateriaFurnace;
+import nl.raspen0.Materia.container.ContainerMixer;
 import nl.raspen0.Materia.tile_entity.TileEntityBlueMateriaChest;
 import nl.raspen0.Materia.tile_entity.TileEntityCrusher;
 import nl.raspen0.Materia.tile_entity.TileEntityMateriaFurnace;
+import nl.raspen0.Materia.tile_entity.TileEntityMixer;
 import cpw.mods.fml.common.network.IGuiHandler;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.relauncher.Side;
@@ -39,6 +41,10 @@ public class GuiHandler implements IGuiHandler {
 				if(entity instanceof TileEntityCrusher){
 					return new ContainerCrusher(player.inventory, (TileEntityCrusher) entity);
 			}
+	//		case mainRegistry.guiIdMixer:
+	//			if(entity instanceof TileEntityMixer){
+	//				return new ContainerMixer(player.inventory, (TileEntityMixer) entity);
+	//		}
 		}
 		}
 		return null;
@@ -62,6 +68,10 @@ public class GuiHandler implements IGuiHandler {
 						if(entity instanceof TileEntityCrusher){
 							return new GuiCrusher(player.inventory, (TileEntityCrusher) entity);
 						}
+	//				case mainRegistry.guiIdMixer:
+	//					if(entity instanceof TileEntityMixer){
+	//						return new GuiMixer(player.inventory, (TileEntityMixer) entity);
+	//					}
 				
 			}
 		}

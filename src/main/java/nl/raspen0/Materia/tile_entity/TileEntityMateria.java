@@ -13,6 +13,7 @@ public class TileEntityMateria {
 		GameRegistry.registerTileEntity(TileEntityBlueMateriaChest.class, "BlueMateriaChest");
 		GameRegistry.registerTileEntity(TileEntityMateriaFurnace.class, "MateriaFurnace");
 		GameRegistry.registerTileEntity(TileEntityCrusher.class, "Crusher");
+		//GameRegistry.registerTileEntity(TileEntityMixer.class, "Mixer");
 	}
 
 }
