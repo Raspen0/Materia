@@ -1,0 +1,8 @@
+itemGroup.Materia=Materia
+
+//Blocks
+tile.materiaOre.name=Blue Materia Ore
+tile.materiaBlock.name=Materia Block
+
+//Items
+item.materiaCrystal.name=Materia Crystal

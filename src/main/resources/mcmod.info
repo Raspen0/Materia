@@ -1,0 +1,14 @@
+[
+{
+  "modid": "Materia",
+  "name": "Materia",
+  "description": "",
+  "version": "0.4.0}",
+  "mcversion": "${mcversion}",
+  "url": "https://github.com/Raspen0/Materia",
+  "updateUrl": "",
+  "authorList": ["Raspen0"],
+  "logoFile": "",
+  "dependencies": []
+}
+]
