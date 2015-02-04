@@ -23,7 +23,6 @@ public class mainRegistry
     
 	
 	
-	
     @EventHandler
     public void PreInit(FMLPreInitializationEvent Event)
     {
