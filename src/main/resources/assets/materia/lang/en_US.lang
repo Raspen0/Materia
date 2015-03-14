@@ -19,3 +19,4 @@ container.materiaFurnace=Materia Furnace
 container.bluemateriachest=Blue Materia Chest
 container.crusher=Crusher
 tile.CrusherIdle.name=Crusher
+tile.materiaGrass.name=Blue Materia Grass

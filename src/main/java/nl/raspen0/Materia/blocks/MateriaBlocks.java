@@ -29,6 +29,7 @@ public class MateriaBlocks {
     public final static Block materiaredOre = new MateriaredOre(Material.rock);
     public final static Block materiaBlock = new MateriaBlock(Material.iron);
     public final static Block bluemateriaBrick = new blueMateriaBrick(Material.rock);
+    public final static Block materiaGrass = new MateriaGrass();
     public static Block blockMateriaFurnaceIdle;
     public static Block blockMateriaFurnaceActive;
     public static Block blockCrusherIdle;
@@ -39,6 +40,7 @@ public class MateriaBlocks {
     
     public static Block materiaBlockHalfSlab;
     public static Block materiaBlockDoubleSlab;
+    
     
     public static void initBlocks(){
     	blockMateriaFurnaceIdle = new BlockMateriaFurnace(false).setBlockName("MateriaFurnaceIdle").setHardness(3.5F).setCreativeTab(nl.raspen0.Materia.CreativeTab.tabMateria);
@@ -65,6 +67,7 @@ public class MateriaBlocks {
         GameRegistry.registerBlock(materiaBlock, "MateriaBlock");
         GameRegistry.registerBlock(bluemateriaBrick, "BlueMateriaBrick");
         GameRegistry.registerBlock(materiaredOre, "materiaredOre");
+        GameRegistry.registerBlock(materiaGrass, "materiaGrass");
 
         GameRegistry.registerBlock(blockMateriaFurnaceIdle, "Materia Furnace");
         GameRegistry.registerBlock(blockMateriaFurnaceActive, "Materia Furnace Active");

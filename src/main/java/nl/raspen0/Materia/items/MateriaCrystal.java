@@ -35,6 +35,13 @@ public class MateriaCrystal extends Item {
 			player.inventory.consumeInventoryItem(this);
 			
 		}
+		else if(world.getBlock(x, y, z) == Blocks.grass){
+			world.setBlock(x, y, z, Blocks.air, 0, 2);
+			world.setBlock(x, y, z, MateriaBlocks.materiaGrass, 0, 2);
+	    	world.playSoundAtEntity(player, "random.orb", 1, 1);
+			player.inventory.consumeInventoryItem(this);
+			
+		}
 		else if(world.getBlock(x, y, z) == Blocks.chest){
 			world.setBlock(x, y, z, Blocks.air, 0, 2);
 			world.setBlock(x, y, z, MateriaBlocks.BlueMateriaChest, 0, 2);
