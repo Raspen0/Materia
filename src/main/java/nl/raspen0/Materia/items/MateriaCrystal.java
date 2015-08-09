@@ -1,5 +1,9 @@
 package nl.raspen0.Materia.items;
 
+import java.util.Random;
+
+import com.sun.media.jfxmedia.logging.Logger;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -7,6 +11,7 @@ import net.minecraft.item.EnumRarity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
+import nl.raspen0.Materia.Strings;
 import nl.raspen0.Materia.blocks.MateriaBlocks;
 
 public class MateriaCrystal extends Item {
@@ -32,10 +37,16 @@ public class MateriaCrystal extends Item {
 			world.setBlock(x, y, z, Blocks.air, 0, 2);
 			world.setBlock(x, y, z, MateriaBlocks.bluemateriaBrick, 0, 2);
 	    	world.playSoundAtEntity(player, "random.orb", 1, 1);
+	    	Strings.logger.info("Test");
 			player.inventory.consumeInventoryItem(this);
 			
 		}
 		else if(world.getBlock(x, y, z) == Blocks.grass){
+	    	Random rand = new Random();
+			for(int countparticles = 0; countparticles <= 10; ++countparticles)
+			{
+				world.spawnParticle("reddust", player.posX + (rand.nextDouble() - 0.5D) * (double)player.width, player.posY + rand.nextDouble() * (double)player.height - (double)player.yOffset, player.posZ + (rand.nextDouble() - 0.5D) * (double)player.width, 0.0D, 0.0D, 0.0D);
+			}
 			world.setBlock(x, y, z, Blocks.air, 0, 2);
 			world.setBlock(x, y, z, MateriaBlocks.materiaGrass, 0, 2);
 	    	world.playSoundAtEntity(player, "random.orb", 1, 1);
@@ -43,10 +54,14 @@ public class MateriaCrystal extends Item {
 			
 		}
 		else if(world.getBlock(x, y, z) == Blocks.chest){
+			int direction;
+			direction = (world.getBlock(x, y, z).getBedDirection(world, x, y, z));
+			System.out.println(direction);
 			world.setBlock(x, y, z, Blocks.air, 0, 2);
-			world.setBlock(x, y, z, MateriaBlocks.BlueMateriaChest, 0, 2);
+			world.setBlock(x, y, z, MateriaBlocks.BlueMateriaChest, 4, 2);
 	    	world.playSoundAtEntity(player, "random.orb", 1, 1);
 			player.inventory.consumeInventoryItem(this);
+
 			
 		}
 		return false;

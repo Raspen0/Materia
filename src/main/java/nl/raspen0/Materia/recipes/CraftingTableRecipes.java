@@ -44,6 +44,12 @@ public class CraftingTableRecipes {
     GameRegistry.addRecipe(new ItemStack(MateriaItems.MateriaHoe), "xx ", " y ", " y ", 
             'x', materiaStack, 'y', stickstack);
     GameRegistry.addShapelessRecipe(new ItemStack(MateriaItems.MateriaIngot, 9), new ItemStack(MateriaBlocks.materiaBlock));
+    
+	//Slabs
+    GameRegistry.addRecipe(new ItemStack(MateriaBlocks.materiaBlockSlab, 6), "xxx", 
+            'x', (materiablockStack));
 	}
+	
+
 
 }

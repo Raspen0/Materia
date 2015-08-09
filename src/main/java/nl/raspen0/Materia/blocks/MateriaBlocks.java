@@ -1,11 +1,13 @@
 package nl.raspen0.Materia.blocks;
 
+import codechicken.nei.api.API;
 import cpw.mods.fml.client.registry.RenderingRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockSlab;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemFood;
 import net.minecraft.item.Item.ToolMaterial;
@@ -14,6 +16,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.util.EnumHelper;
 import net.minecraftforge.oredict.OreDictionary;
 import nl.raspen0.Materia.*;
+import nl.raspen0.Materia.items.ItemMateriaSlab;
 import nl.raspen0.Materia.items.MateriaItems;
 
 public class MateriaBlocks {
@@ -30,6 +33,7 @@ public class MateriaBlocks {
     public final static Block materiaBlock = new MateriaBlock(Material.iron);
     public final static Block bluemateriaBrick = new blueMateriaBrick(Material.rock);
     public final static Block materiaGrass = new MateriaGrass();
+    //public final static Block Infuser = new MultiBlock(Material.iron);
     public static Block blockMateriaFurnaceIdle;
     public static Block blockMateriaFurnaceActive;
     public static Block blockCrusherIdle;
@@ -38,8 +42,10 @@ public class MateriaBlocks {
     public static Block blockMixerIdle;
     public static Block blockMixerActive;
     
-    public static Block materiaBlockHalfSlab;
+    public static Block materiaBlockSlab;
     public static Block materiaBlockDoubleSlab;
+    
+
     
     
     public static void initBlocks(){
@@ -51,10 +57,8 @@ public class MateriaBlocks {
     //	blockMixerIdle = new BlockMixer(false).setBlockName("MixerIdle").setHardness(3.5F).setCreativeTab(nl.raspen0.Materia.CreativeTab.tabMateria);
     //	blockMixerActive = new BlockMixer(true).setBlockName("MixerActive").setHardness(3.5F);
     	
-        if (mainRegistry.MateriaSlabs){
-    	materiaBlockHalfSlab = new BlockMateriaSlab(false, materiaBlock, Material.iron).setBlockName("slabMateriaBlock");
-    	materiaBlockDoubleSlab = new BlockMateriaSlab(true, materiaBlock, Material.iron).setBlockName("doubleslabMateriaBlock");
-        } else {}
+    	materiaBlockSlab = new BlockMateriaSlab(false, Material.iron).setBlockName("materiaSlab");
+    	materiaBlockDoubleSlab = new BlockMateriaSlab(true, Material.iron).setBlockName("materiaSlabDouble");
     }
     
     public static void registerBlocks(){
@@ -68,19 +72,22 @@ public class MateriaBlocks {
         GameRegistry.registerBlock(bluemateriaBrick, "BlueMateriaBrick");
         GameRegistry.registerBlock(materiaredOre, "materiaredOre");
         GameRegistry.registerBlock(materiaGrass, "materiaGrass");
+      //  GameRegistry.registerBlock(Infuser, "infuser");
 
         GameRegistry.registerBlock(blockMateriaFurnaceIdle, "Materia Furnace");
         GameRegistry.registerBlock(blockMateriaFurnaceActive, "Materia Furnace Active");
+        
+        GameRegistry.registerBlock(materiaBlockSlab, ItemMateriaSlab.class, "materiaSlab");
+        GameRegistry.registerBlock(materiaBlockDoubleSlab, ItemMateriaSlab.class, "materiaDoubleSlab");
+        
+	    ItemStack materiaBlockDSlab = new ItemStack(materiaBlockDoubleSlab);
+        API.hideItem(materiaBlockDSlab);
         
         if (mainRegistry.BlockCrusher){
         GameRegistry.registerBlock(blockCrusherIdle, "Crusher");
         GameRegistry.registerBlock(blockCrusherActive, "Crusher Active");
         } else {}
         
-        if (mainRegistry.MateriaSlabs){
-        GameRegistry.registerBlock(materiaBlockHalfSlab, "Materia Slab");
-        GameRegistry.registerBlock(materiaBlockDoubleSlab, "Materia DoubleSlab");
-        } else {}
         
    //     GameRegistry.registerBlock(blockMixerIdle, "Mixer");
    //     GameRegistry.registerBlock(blockMixerActive, "Mixer Active");

@@ -42,6 +42,7 @@ public class MateriaItems {
 	public static Item MateriaHoe;
 	public static Item MateriaAxe;
 	public static Item Materiadust;
+	public static Item MateriaPork;
 	//Currently used for Testing
 	public static Item MateriaCoal;
 	
@@ -56,6 +57,7 @@ public class MateriaItems {
         MateriaHoe = new CustomHoe(BlueMateria).setUnlocalizedName("MateriaHoe").setCreativeTab(nl.raspen0.Materia.CreativeTab.tabMateria).setTextureName("Materia:blueMateriaHoe");
         MateriaAxe = new CustomAxe(BlueMateria).setUnlocalizedName("MateriaAxe").setCreativeTab(nl.raspen0.Materia.CreativeTab.tabMateria).setTextureName("Materia:blueMateriaAxe");
         MateriaCoal = new nl.raspen0.Materia.items.MateriaCoal();
+        MateriaPork = new MateriaPork("MateriaPork", 3, 0.3F, true);
     }
     
     public static void registerBlocks(){
@@ -79,6 +81,7 @@ public class MateriaItems {
     	
     	GameRegistry.registerItem(MateriaCoal, "MateriaCoal");
     	
+    	GameRegistry.registerItem(MateriaPork, "MateriaPork");
     	
     	
     }

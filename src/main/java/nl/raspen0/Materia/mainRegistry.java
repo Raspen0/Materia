@@ -17,6 +17,7 @@ import net.minecraftforge.common.config.Configuration;
 import nl.raspen0.Materia.blocks.MateriaBlocks;
 import nl.raspen0.Materia.gui.GuiHandler;
 import nl.raspen0.Materia.items.MateriaItems;
+import nl.raspen0.Materia.mobs.MateriaPig;
 import nl.raspen0.Materia.recipes.CraftingTableRecipes;
 import nl.raspen0.Materia.recipes.FurnaceRecipes;
 import nl.raspen0.Materia.server.ServerProxy;
@@ -36,6 +37,7 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.eventhandler.Event;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.network.NetworkRegistry;
+import cpw.mods.fml.common.registry.EntityRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 import cpw.mods.fml.relauncher.Side;
@@ -89,7 +91,6 @@ public class mainRegistry
     	CraftingTableRecipes.addCraftingRecipes();
     	FurnaceRecipes.addSmeltingRecipes();
 		NetworkRegistry.INSTANCE.registerGuiHandler(this, new GuiHandler());
-    	proxy.registerRenderThings();
     	syncConfig();
     	
     	
@@ -117,8 +118,16 @@ public class mainRegistry
     @EventHandler
     public void load(FMLInitializationEvent event)
     {
+    	int modEntityID = 0;
+
+        EntityRegistry.registerModEntity(MateriaPig.class, "Materia_Pig", ++modEntityID, this.instance, 80, 1, true);
+       // EntityRegistry.addSpawn(EntityYourMob.class, 2, 0, 1, EnumCreatureType.creature, BiomeGenBase.biomeList);
+   
+        
+    	proxy.registerRenderThings();
+    	
     	FMLCommonHandler.instance().bus().register(instance);
-        OreDictionaryRegistry.mainRegistry();	
+        OreDictionaryRegistry.mainRegistry();
     }
     
     @EventHandler
