@@ -27,7 +27,7 @@ public class MateriaBlocks {
     	initBlocks();
     	registerBlocks();
     }
-    public static Block BlueMateriaChest = new BlueMateriaChest(0).setBlockName("BlueMateriaChest").setBlockTextureName("Materia:BlueMateriaChest.png").setCreativeTab(nl.raspen0.Materia.CreativeTab.tabMateria);
+    public static Block BlueChestBlock = new BlueMateriaChest(0).setBlockName("BlueMateriaChest").setBlockTextureName("Materia:BlueMateriaChest.png").setCreativeTab(nl.raspen0.Materia.CreativeTab.tabMateria);
     public final static Block materiaOre = new MateriaOre(Material.rock);
     public final static Block materiaredOre = new MateriaredOre(Material.rock);
     public final static Block materiaBlock = new MateriaBlock(Material.iron);
@@ -62,7 +62,7 @@ public class MateriaBlocks {
     }
     
     public static void registerBlocks(){
-    	GameRegistry.registerBlock(BlueMateriaChest, "BlueMateriaChest");
+    	GameRegistry.registerBlock(BlueChestBlock, "BlueMateriaChest");
         
         
         
@@ -76,6 +76,9 @@ public class MateriaBlocks {
 
         GameRegistry.registerBlock(blockMateriaFurnaceIdle, "Materia Furnace");
         GameRegistry.registerBlock(blockMateriaFurnaceActive, "Materia Furnace Active");
+        
+	    ItemStack MateriaActiveFurnace = new ItemStack(blockMateriaFurnaceActive);
+        API.hideItem(MateriaActiveFurnace);
         
         GameRegistry.registerBlock(materiaBlockSlab, ItemMateriaSlab.class, "materiaSlab");
         GameRegistry.registerBlock(materiaBlockDoubleSlab, ItemMateriaSlab.class, "materiaDoubleSlab");

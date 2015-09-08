@@ -18,7 +18,7 @@ public class ClientProxy extends ServerProxy{
 	public void registerRenderThings(){
 
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityBlueMateriaChest.class, new BlueMateriaChestRenderer());
-		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(MateriaBlocks.BlueMateriaChest), new ItemRendererBlueMateriaChest());
+		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(MateriaBlocks.BlueChestBlock), new ItemRendererBlueMateriaChest());
 		
 		RenderingRegistry.registerEntityRenderingHandler(MateriaPig.class, new MateriaPigRenderer(new ModelPig(), 0.5F));
 	}

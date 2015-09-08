@@ -19,7 +19,7 @@ import nl.raspen0.Materia.container.ContainerBlueMateriaChest;
 
 public class TileEntityBlueMateriaChest extends TileEntity implements IInventory
 {
-    private ItemStack[] chestContents = new ItemStack[54];
+    public ItemStack[] chestContents = new ItemStack[54];
     /** Determines if the check for adjacent chests has taken place. */
     public boolean adjacentChestChecked;
     /** Contains the chest tile located adjacent to this one (if any) */
@@ -39,6 +39,7 @@ public class TileEntityBlueMateriaChest extends TileEntity implements IInventory
     /** Server sync counter (once per 20 ticks) */
     private int ticksSinceSync;
     private int cachedChestType;
+    private int facing;
     private String customName;
     public float field_145972_a;
     public float field_145975_i;
@@ -54,6 +55,16 @@ public class TileEntityBlueMateriaChest extends TileEntity implements IInventory
     public TileEntityBlueMateriaChest(int entity)
     {
         this.cachedChestType = entity;
+    }
+    
+    public int getFacing()
+    {
+        return this.facing;
+    }
+    
+    public void setFacing(int facing2)
+    {
+        this.facing = facing2;
     }
 
     /**
@@ -183,6 +194,7 @@ public class TileEntityBlueMateriaChest extends TileEntity implements IInventory
                 this.chestContents[j] = ItemStack.loadItemStackFromNBT(nbttagcompound1);
             }
         }
+        facing = nbt.getByte("facing");
     }
 
     public void writeToNBT(NBTTagCompound nbt)
@@ -202,6 +214,7 @@ public class TileEntityBlueMateriaChest extends TileEntity implements IInventory
         }
 
         nbt.setTag("Items", nbttaglist);
+        nbt.setByte("facing", (byte)facing);
 
         if (this.hasCustomInventoryName())
         {
@@ -390,17 +403,23 @@ public class TileEntityBlueMateriaChest extends TileEntity implements IInventory
     /**
      * Called when a client event is received with the event number and argument, see World.sendClientEvent
      */
+    @Override
     public boolean receiveClientEvent(int i, int j)
     {
         if (i == 1)
         {
-            this.numPlayersUsing = j;
-            return true;
+            numPlayersUsing = j;
         }
-        else
+        else if (i == 2)
         {
-            return super.receiveClientEvent(i, j);
+            facing = (byte) j;
         }
+        else if (i == 3)
+        {
+            facing = (byte) (j & 0x7);
+            numPlayersUsing = (j & 0xF8) >> 3;
+        }
+        return true;
     }
 
     public void openInventory()
@@ -458,4 +477,9 @@ public class TileEntityBlueMateriaChest extends TileEntity implements IInventory
 
         return this.cachedChestType;
     }
+    public void removeAdornments()
+    {
+
+    }
+
 }
