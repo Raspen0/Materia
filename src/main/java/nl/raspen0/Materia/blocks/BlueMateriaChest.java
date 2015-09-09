@@ -41,6 +41,7 @@ public class BlueMateriaChest extends BlockContainer
     protected BlueMateriaChest(int i)
     {
         super(Material.iron);
+    	setHardness(3.0F);
         setCreativeTab(CreativeTab.tabMateria);
         setBlockName("BlueMateriaChest");
         setBlockTextureName("Materia:BlueMateriaChest.png");
