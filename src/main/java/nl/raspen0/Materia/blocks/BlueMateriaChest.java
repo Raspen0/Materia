@@ -195,7 +195,6 @@ public class BlueMateriaChest extends BlockContainer
         TileEntityBlueMateriaChest tileentitychest = (TileEntityBlueMateriaChest) world.getTileEntity(i, j, k);
         if (tileentitychest != null)
         {
-            tileentitychest.removeAdornments();
             dropContent(0, tileentitychest, world, tileentitychest.xCoord, tileentitychest.yCoord, tileentitychest.zCoord);
         }
         super.breakBlock(world, i, j, k, i1, i2);
